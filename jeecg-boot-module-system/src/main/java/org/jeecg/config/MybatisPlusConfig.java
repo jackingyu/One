@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
  *
  */
 @Configuration
-@MapperScan(value={"org.jeecg.modules.**.mapper*"})
+@MapperScan(value={"org.jeecg.modules.**.mapper*", "com.elnido.modules.**.mapper*"})
 public class MybatisPlusConfig {
 
     /**
