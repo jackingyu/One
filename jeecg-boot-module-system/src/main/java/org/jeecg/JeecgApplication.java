@@ -8,7 +8,9 @@ import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -19,11 +21,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Slf4j
 @EnableSwagger2
 @SpringBootApplication
-@EnableAutoConfiguration
-public class JeecgApplication {
+public class JeecgApplication extends SpringBootServletInitializer {
 
-  public static void main(String[] args) throws UnknownHostException {
-    //System.setProperty("spring.devtools.restart.enabled", "true");
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(JeecgApplication.class);
+    }
+
+    public static void main(String[] args) throws UnknownHostException {
+        //System.setProperty("spring.devtools.restart.enabled", "true");
 
         ConfigurableApplicationContext application = SpringApplication.run(JeecgApplication.class, args);
         Environment env = application.getEnvironment();

@@ -11,3 +11,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 jeecg-boot-base-common/jeecg-boot-base-common.iml
 jeecg-boot-module-system/jeecg-boot-module-system.iml
+logs
