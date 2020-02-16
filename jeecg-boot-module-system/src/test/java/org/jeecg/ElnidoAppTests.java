@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
   MaterialGroupTest.class,
+  BankTest.class
 })
 public class ElnidoAppTests {
 }
