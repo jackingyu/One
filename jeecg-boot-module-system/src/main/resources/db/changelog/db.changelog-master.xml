@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="vendor" author="jack">
+        <createTable tableName="vendor" remarks="供应商">
+            <column name="id" type="varchar(32)" remarks="供应商id 主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_id"/>
+            </column>
+            <column name="name" type="varchar(50)" remarks="供应商名称">
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人'">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除'">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
