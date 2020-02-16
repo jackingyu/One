@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.masterdata.mapper.MaterialMapper">
+
+    <resultMap id="materialVOMap" type="com.elnido.modules.masterdata.vo.MaterialVO">
+        <id column="id" property="id"/>
+        <result column="material_name" property="materialName"/>
+        <result column="material_code" property="materialCode"/>
+        <result column="material_group_name" property="materialGroupName"/>
+        <result column="material_group_code" property="materialGroupCode"/>
+    </resultMap>
+
+</mapper>
