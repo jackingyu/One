@@ -21,7 +21,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("master_material_group")
+@TableName("material_group")
 @ApiModel(value = "物料组对象", description = "物料组表")
 public class MaterialGroup implements Serializable {
 

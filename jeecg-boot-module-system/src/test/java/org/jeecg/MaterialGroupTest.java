@@ -7,11 +7,6 @@ import com.elnido.modules.masterdata.service.MaterialGroupService;
 import com.elnido.modules.masterdata.service.MaterialService;
 import com.elnido.modules.masterdata.vo.MaterialVO;
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.modules.demo.mock.MockController;
-import org.jeecg.modules.demo.test.entity.JeecgDemo;
-import org.jeecg.modules.demo.test.mapper.JeecgDemoMapper;
-import org.jeecg.modules.demo.test.service.IJeecgDemoService;
-import org.jeecg.modules.system.service.ISysDataLogService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 
@@ -63,29 +57,29 @@ public class MaterialGroupTest {
 	public void test_paged_materials() {
 		MaterialPage<MaterialVO> materialPage = new MaterialPage<>(1, 2);
 		materialPage.setMaterialGroupCode(1);
-		materialPage.setMaterialName("测试");
+		materialPage.setMaterialName("Test");
 		MaterialPage<MaterialVO> materialVOPage = materialService.findPagedMaterials(materialPage);
 		log.info(materialVOPage.getRecords().toString());
-		log.info("总条数 -------------> {}", materialVOPage.getTotal());
-		log.info("当前页数 -------------> {}", materialVOPage.getCurrent());
-		log.info("当前每页显示数 -------------> {}", materialVOPage.getSize());
+		log.info("Total -------------> {}", materialVOPage.getTotal());
+		log.info("Current -------------> {}", materialVOPage.getCurrent());
+		log.info("Size -------------> {}", materialVOPage.getSize());
 	}
 
 	@Test
 	public void test_create_material() {
-		Material material = createMockMaterial("模拟测试物料001","模拟测试物料001描述", "100", 1);
+		Material material = createMockMaterial("Mock-Material-001","Mock-Material-001-Description", "100", 1);
 		boolean created = materialService.createMaterial(material);
 		Assert.assertThat(created, is(true));
 	}
 
 	@Test
 	public void test_update_material() {
-		Material material = createMockMaterial("模拟测试物料002","模拟测试物料002描述", "200", 1);
+		Material material = createMockMaterial("Mock-Material-002","Mock-Material-002-Description", "200", 1);
 		boolean created = materialService.createMaterial(material);
 
 		Assert.assertThat(created, is(true));
-		material.setMaterialName("模拟测试物料002-更新");
-		material.setMaterialDescription("模拟测试物料002描述-更新");
+		material.setMaterialName("Mock-Material-002-Update");
+		material.setMaterialDescription("Mock-Material-002-Description-Update");
 		material.setMaterialGroupCode(2);
 
 		boolean updated = materialService.updateMaterial(material);
