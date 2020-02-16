@@ -25,7 +25,7 @@ import java.util.Objects;
 @Slf4j
 @Api(tags = "物料维护")
 @RestController
-@RequestMapping("/masterdata/materials/")
+@RequestMapping("/masterdata/materials")
 public class MaterialController {
 
     @Resource
@@ -34,7 +34,7 @@ public class MaterialController {
     @Resource
     private MaterialService materialService;
 
-    @GetMapping("materialgroups")
+    @GetMapping("/materialgroups")
     @ApiOperation(value = "物料组表-查询所有物料组", notes = "物料组表-查询所有物料组")
     public Result<List<MaterialGroup>> searchAllMaterialGroups() {
         Result<List<MaterialGroup>> result = new Result<>();
@@ -49,7 +49,7 @@ public class MaterialController {
         return result;
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     @ApiOperation(value = "物料表-按条件查询物料", notes = "物料表-按条件查询物料")
     public Result<MaterialPage<MaterialVO>> pagedSearchMaterials(MaterialSearchVO materialSearchVO,
                                                                  @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -65,7 +65,7 @@ public class MaterialController {
         return result;
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     @ApiOperation(value = "物料表-新建物料", notes = "物料表-新建物料")
     public Result<Material> createMaterial(@RequestBody Material material) {
         Result<Material> result = new Result<>();
@@ -79,7 +79,7 @@ public class MaterialController {
         return result;
     }
 
-    @PutMapping("")
+    @PutMapping("/")
     @ApiOperation(value = "物料表-更新物料", notes = "物料表-更新物料")
     public Result<Material> updateMaterial(@RequestBody Material material) {
         Result<Material> result = new Result<>();
