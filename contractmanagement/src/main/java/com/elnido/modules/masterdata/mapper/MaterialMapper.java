@@ -24,8 +24,8 @@ public interface MaterialMapper extends BaseMapper<Material> {
      */
     @ResultMap("materialVOMap")
     @Select("<script>select m.id, m.material_name, m.material_description, m.material_code, mg.material_group_code, mg.material_group_name " +
-            "from master_material m " +
-            "left join master_material_group mg on m.material_group_code = mg.material_group_code " +
+            "from material m " +
+            "left join material_group mg on m.material_group_code = mg.material_group_code " +
             "<where>" +
             "<if test=\"materialGroupCode != null\"> " +
             "and mg.material_group_code = #{materialGroupCode} " +
