@@ -35,6 +35,9 @@ public class Material implements Serializable {
     @ApiModelProperty(value = "物料名称")
     private String materialName;
 
+    @ApiModelProperty(value = "物料描述")
+    private String materialDescription;
+
     @ApiModelProperty(value = "物料代码")
     private String materialCode;
 
