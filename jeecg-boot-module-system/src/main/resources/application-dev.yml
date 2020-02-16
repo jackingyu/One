@@ -22,6 +22,8 @@ spring:
         max-request-size: 10MB
   messages:
     basename: static/i18n/messages
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
   mail:
     host: smtp.163.com
     username: jeecgos@163.com
