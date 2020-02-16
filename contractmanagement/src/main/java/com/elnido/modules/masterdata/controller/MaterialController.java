@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
+import org.jeecg.common.util.MessageUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -34,6 +36,9 @@ public class MaterialController {
     @Resource
     private MaterialService materialService;
 
+    @Autowired
+    private MessageUtils messageUtils;
+
     @GetMapping("/materialgroups")
     @ApiOperation(value = "物料组表-查询所有物料组", notes = "物料组表-查询所有物料组")
     public Result<List<MaterialGroup>> searchAllMaterialGroups() {
@@ -41,7 +46,7 @@ public class MaterialController {
         List<MaterialGroup> materialGroupList = materialGroupService.findAllMaterialGroups();
 
         if(Objects.isNull(materialGroupList)) {
-            result.error500("未找到对应实体");
+            result.error500(messageUtils.get("base.recordnotexist"));
         }else {
             result.setResult(materialGroupList);
             result.setSuccess(true);
@@ -88,7 +93,7 @@ public class MaterialController {
             result.setResult(material);
             result.setSuccess(true);
         } else {
-            result.setMessage("更新失败!");
+            result.setMessage(messageUtils.get("base.updatefailed"));
             result.setSuccess(false);
         }
         return result;
