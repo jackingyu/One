@@ -16,4 +16,18 @@ public interface MaterialService extends IService<Material> {
      * @return 分页的物料数组
      */
     MaterialPage<MaterialVO> findPagedMaterials(MaterialPage<MaterialVO> materialPage);
+
+    /**
+     * 新增物料
+     * @param material
+     * @return
+     */
+    boolean createMaterial(Material material);
+
+    /**
+     * 更新物料
+     * @param material
+     * @return
+     */
+    boolean updateMaterial(Material material);
 }
