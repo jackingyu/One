@@ -121,7 +121,7 @@ spring:
     port: 6379
 #mybatis plus 设置
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml,classpath*:com/elnido/modules/**/xml/*Mapper.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false
@@ -130,6 +130,7 @@ mybatis-plus:
       id-type: 4
       # 默认数据库表下划线命名
       table-underline: true
+  type-enums-package: com.elnido.modules.masterdata.enums
 #jeecg专用配置
 jeecg :
   path :

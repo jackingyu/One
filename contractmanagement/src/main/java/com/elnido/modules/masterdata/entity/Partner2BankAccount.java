@@ -1,9 +1,10 @@
 package com.elnido.modules.masterdata.entity;
 
+
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
@@ -14,7 +15,6 @@ import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author baogang
@@ -22,23 +22,22 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("company")
-@ApiModel(value = "公司对象", description = "公司表")
-public class Company {
+@TableName("partner_bankaccount_rel")
+@ApiModel(value = "客户-银行账号对象", description = "客户-银行账户关系映射关系表")
+public class Partner2BankAccount {
 
     @TableId(type = IdType.ID_WORKER_STR)
     @ApiModelProperty(value = "id")
     private String id;
 
-    @ApiModelProperty(value = "公司代码")
-    private String companyCode;
+    @ApiModelProperty(value = "合作伙伴ID")
+    private String partnerId;
 
-    @ApiModelProperty(value = "公司名称")
-    private String companyName;
+    @ApiModelProperty(value = "银行账户ID")
+    private String bankAccountId;
 
-    @ApiModelProperty(value = "银行账户")
-    @TableField(exist = false)
-    private List<BankAccount> bankAccounts;
+    @ApiModelProperty(value = "合作伙伴类型")
+    private PartnerTypeEnum partnerType;
 
     /**
      * 创建人

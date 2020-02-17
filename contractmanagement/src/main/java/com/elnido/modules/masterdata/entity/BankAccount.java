@@ -14,7 +14,6 @@ import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author baogang
@@ -22,24 +21,33 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("company")
-@ApiModel(value = "公司对象", description = "公司表")
-public class Company {
+@TableName("bank_account")
+@ApiModel(value = "银行账户对象", description = "银行账户表")
+public class BankAccount {
 
     @TableId(type = IdType.ID_WORKER_STR)
     @ApiModelProperty(value = "id")
     private String id;
 
-    @ApiModelProperty(value = "公司代码")
-    private String companyCode;
+    @ApiModelProperty(value = "银行ID")
+    private String bankId;
 
-    @ApiModelProperty(value = "公司名称")
-    private String companyName;
+    @ApiModelProperty(value = "银行名称")
+    @TableField(exist = false)
+    private String bankName;
+
+    @ApiModelProperty(value = "支行名称")
+    @TableField(exist = false)
+    private String subBranchName;
+
+    @ApiModelProperty(value = "支行ID")
+    private String subBranchId;
 
     @ApiModelProperty(value = "银行账户")
-    @TableField(exist = false)
-    private List<BankAccount> bankAccounts;
+    private String bankAccount;
 
+    @ApiModelProperty(value = "账户名称")
+    private String bankAccountName;
     /**
      * 创建人
      */

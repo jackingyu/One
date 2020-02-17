@@ -40,7 +40,7 @@ public class BankTest {
 
 	@Test
 	public void test_find_subbranches_by_bank_id() {
-		List<Bank> subbranches = bankService.findSubbranchesByBankId("1003");
+		List<Bank> subbranches = bankService.findSubbranchesByBankId("1001");
 		Assert.assertThat(subbranches, notNullValue());
 		Assert.assertThat(subbranches.size() > 0, is(Boolean.TRUE));
 
