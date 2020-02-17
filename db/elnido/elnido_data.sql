@@ -62,5 +62,3 @@ VALUES ('bf1c5cac91ad4d98a1070deb48cc1e5b','eaa2aab69d74443ebc025ee4fd76b882', '
 
 INSERT INTO `partner_bankaccount_rel` (id, partner_id, bank_account_id, partner_type, create_by, create_time)
 VALUES ('5064ab3a049b4522b6571fab4ba330b7','eaa2aab69d74443ebc025ee4fd76b882', 'f24c34579de64f13825d47d0319a1a3f', 1, 'partneradmin', now());
-
-
