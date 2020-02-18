@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.masterdata.mapper.CompanyMapper">
+
+    <resultMap id="companyMap" type="com.elnido.modules.masterdata.entity.Company">
+        <result column="id" property="id"/>
+        <result column="company_code" property="companyCode"/>
+        <result column="company_name" property="companyName"/>
+        <collection property="bankAccounts" column="id"
+                    select="com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper.findBankAccountsByCompanyId"/>
+    </resultMap>
+
+    <select id="findPagedCompanies" resultMap="companyMap">
+        select *
+        from company
+        <where>
+        <if test="companyName != null and companyName != ''">
+        <bind name="pattern" value="'%' + companyName + '%'" />
+        and company_name like #{pattern}
+        </if>
+        </where>
+    </select>
+
+    <select id="findCompanyWithBankAccounts" resultMap="companyMap">
+        select *
+        from company
+        where id = #{id}
+    </select>
+</mapper>
