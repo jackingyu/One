@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
   MaterialGroupTest.class,
   BankTest.class,
-  CompanyTest.class
+  CompanyTest.class,
+  VendorTest.class
 })
 public class ElnidoAppTests {
 }
