@@ -26,10 +26,10 @@ VALUES ('f24c34579de64f13825d47d0319a1a3f','1001', '10011111013', '测试银行�
 
 -- 合作伙伴-银行账户关系
 INSERT INTO `partner_bankaccount_rel` (id, partner_id, bank_account_id, partner_type, create_by, create_time)
-VALUES ('0c1adefea163407cbd75f8d1810fbb23','eaa2aab69d74443ebc025ee4fd76b882', '8f1556b40937492bb1fbeeba086fc110', 1, 'partneradmin', now());
+VALUES ('0c1adefea163407cbd75f8d1810fbb23','eaa2aab69d74443ebc025ee4fd76b882', '8f1556b40937492bb1fbeeba086fc110', 'C', 'partneradmin', now());
 
 INSERT INTO `partner_bankaccount_rel` (id, partner_id, bank_account_id, partner_type, create_by, create_time)
-VALUES ('bf1c5cac91ad4d98a1070deb48cc1e5b','eaa2aab69d74443ebc025ee4fd76b882', 'c2c755524e6c40fcba1b8632d6c311b0', 1, 'partneradmin', now());
+VALUES ('bf1c5cac91ad4d98a1070deb48cc1e5b','eaa2aab69d74443ebc025ee4fd76b882', 'c2c755524e6c40fcba1b8632d6c311b0', 'C', 'partneradmin', now());
 
 INSERT INTO `partner_bankaccount_rel` (id, partner_id, bank_account_id, partner_type, create_by, create_time)
-VALUES ('5064ab3a049b4522b6571fab4ba330b7','eaa2aab69d74443ebc025ee4fd76b882', 'f24c34579de64f13825d47d0319a1a3f', 1, 'partneradmin', now());
+VALUES ('5064ab3a049b4522b6571fab4ba330b7','eaa2aab69d74443ebc025ee4fd76b882', 'f24c34579de64f13825d47d0319a1a3f', 'C', 'partneradmin', now());

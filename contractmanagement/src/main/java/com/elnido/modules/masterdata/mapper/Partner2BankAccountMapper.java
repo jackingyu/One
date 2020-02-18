@@ -22,6 +22,6 @@ public interface Partner2BankAccountMapper extends BaseMapper<Partner2BankAccoun
             " LEFT JOIN bank_account b ON p.bank_account_id=b.id " +
             " LEFT JOIN (select bank_id, bank_name from banks group by bank_id, bank_name) mainbank ON b.bank_id=mainbank.bank_id " +
             " LEFT JOIN banks ON b.sub_branch_id=banks.sub_branch_id " +
-            " WHERE partner_id=#{id} and partner_type=1 ")
+            " WHERE partner_id=#{id} and partner_type='C' ")
     List<BankAccount> findBankAccountsByCompanyId(String id);
 }
