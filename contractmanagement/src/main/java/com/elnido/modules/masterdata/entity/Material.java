@@ -3,6 +3,7 @@ package com.elnido.modules.masterdata.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.elnido.modules.masterdata.enums.MaterialTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -42,7 +44,12 @@ public class Material implements Serializable {
     private String materialCode;
 
     @ApiModelProperty(value = "物料组代码")
+    @Dict(dicCode = "material_group")
     private Integer materialGroupCode;
+
+    @ApiModelProperty(value = "一次性物料标记")
+    @Dict(dicCode = "material_property")
+    private MaterialTypeEnum oneTimeFlag;
 
     /**
      * 创建人

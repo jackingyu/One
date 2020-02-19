@@ -1,14 +1,8 @@
 package com.elnido.modules.masterdata.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.elnido.modules.masterdata.entity.Bank;
 import com.elnido.modules.masterdata.entity.Company;
 import com.elnido.modules.masterdata.model.CompanyPage;
-import com.elnido.modules.masterdata.model.MaterialPage;
-import com.elnido.modules.masterdata.vo.MaterialVO;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * @author baogang

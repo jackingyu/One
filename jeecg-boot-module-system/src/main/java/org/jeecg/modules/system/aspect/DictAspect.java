@@ -40,7 +40,7 @@ public class DictAspect {
     @Autowired
     private ISysDictService dictService;
     // 定义切点Pointcut
-    @Pointcut("execution(public * org.jeecg.modules..*.*Controller.*(..))")
+    @Pointcut("execution(public * org.jeecg.modules..*.*Controller.*(..)) || execution(public * com.elnido.modules..*.*Controller.*(..))")
     public void excudeService() {
     }
 

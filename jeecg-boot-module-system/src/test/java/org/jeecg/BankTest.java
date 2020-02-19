@@ -1,7 +1,6 @@
 package org.jeecg;
 
 import com.elnido.modules.masterdata.entity.Bank;
-import com.elnido.modules.masterdata.entity.MaterialGroup;
 import com.elnido.modules.masterdata.service.BankService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
