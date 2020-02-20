@@ -13,8 +13,6 @@
         <result column="business_license" property="businessLicense"/>
         <result column="tax_code" property="taxCode"/>
         <result column="vendor_group_id" property="vendorGroupId"/>
-        <association property="vendorGroupName" column="vendor_group_id"
-                     select="com.elnido.modules.masterdata.mapper.VendorGroupMapper.findVendorGroupNameById"/>
         <collection property="bankAccounts" column="id"
                     select="com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper.findBankAccountsByVendorId"/>
     </resultMap>

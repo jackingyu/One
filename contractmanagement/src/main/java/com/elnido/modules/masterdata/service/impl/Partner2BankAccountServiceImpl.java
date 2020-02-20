@@ -3,11 +3,8 @@ package com.elnido.modules.masterdata.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Partner2BankAccount;
-import com.elnido.modules.masterdata.mapper.BankAccountMapper;
 import com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper;
-import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.Partner2BankAccountService;
 import org.springframework.stereotype.Service;
 

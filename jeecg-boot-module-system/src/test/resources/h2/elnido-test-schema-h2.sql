@@ -98,19 +98,6 @@ CREATE TABLE `partner_bankaccount_rel`  (
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `vendor_group`;
-CREATE TABLE `vendor_group`  (
-  `id` varchar(32) NOT NULL ,
-  `vendor_group_name` varchar(255) ,
-  `vendor_group_code` int(11) ,
-  `create_by` varchar(32) ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) ,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0 ,
-  PRIMARY KEY (`id`)
-);
-
 DROP TABLE IF EXISTS `vendor`;
 CREATE TABLE `vendor`  (
   `id` varchar(32) NOT NULL ,

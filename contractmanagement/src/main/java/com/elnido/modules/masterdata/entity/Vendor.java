@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -45,6 +46,7 @@ public class Vendor implements Serializable {
     private String contactPerson;
 
     @ApiModelProperty(value = "供应商分组ID")
+    @Dict(dicCode = "vendor_group")
     private String vendorGroupId;
 
     @ApiModelProperty(value = "联络人身份证号码")
@@ -64,10 +66,6 @@ public class Vendor implements Serializable {
 
     @ApiModelProperty(value = "税务登记号")
     private String taxCode;
-
-    @ApiModelProperty(value = "供应商分组名称")
-    @TableField(exist = false)
-    private String vendorGroupName;
 
     @ApiModelProperty(value = "银行账户")
     @TableField(exist = false)
