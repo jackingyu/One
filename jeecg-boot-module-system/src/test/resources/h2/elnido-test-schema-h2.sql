@@ -78,3 +78,37 @@ CREATE TABLE `partner_bankaccount_rel`  (
   `del_flag` tinyint(1) DEFAULT 0 ,
   PRIMARY KEY (`id`)
 );
+
+DROP TABLE IF EXISTS `vendor_group`;
+CREATE TABLE `vendor_group`  (
+  `id` varchar(32) NOT NULL ,
+  `vendor_group_name` varchar(255) ,
+  `vendor_group_code` int(11) ,
+  `create_by` varchar(32) ,
+  `create_time` TIMESTAMP ,
+  `update_by` varchar(32) ,
+  `update_time` TIMESTAMP ,
+  `del_flag` tinyint(1) DEFAULT 0 ,
+  PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `vendor`;
+CREATE TABLE `vendor`  (
+  `id` varchar(32) NOT NULL ,
+  `code` varchar(32) ,
+  `name` varchar(32) ,
+  `vendor_group_id` varchar(32) ,
+  `contact_person` varchar(20) ,
+  `contact_person_id` varchar(30) ,
+  `contact_phone` varchar(30) ,
+  `social_credit_code` varchar(30) ,
+  `tax_subject` varchar(20) ,
+  `business_license` varchar(30) ,
+  `tax_code` varchar(30) ,
+  `create_by` varchar(32) ,
+  `create_time` TIMESTAMP ,
+  `update_by` varchar(32) ,
+  `update_time` TIMESTAMP ,
+  `del_flag` tinyint(1) DEFAULT 0 ,
+  PRIMARY KEY (`id`)
+);

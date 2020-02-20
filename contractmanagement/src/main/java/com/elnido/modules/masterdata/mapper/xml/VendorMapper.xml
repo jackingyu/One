@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.masterdata.mapper.VendorMapper">
+
+    <resultMap id="vendorMap" type="com.elnido.modules.masterdata.entity.Vendor">
+        <result column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="contact_person_id" property="contactPersonId"/>
+        <result column="contact_phone" property="contactPhone"/>
+        <result column="social_credit_code" property="socialCreditCode"/>
+        <result column="tax_subject" property="taxSubject"/>
+        <result column="business_license" property="businessLicense"/>
+        <result column="tax_code" property="taxCode"/>
+        <result column="vendor_group_id" property="vendorGroupId"/>
+        <association property="vendorGroupName" column="vendor_group_id"
+                     select="com.elnido.modules.masterdata.mapper.VendorGroupMapper.findVendorGroupNameById"/>
+        <collection property="bankAccounts" column="id"
+                    select="com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper.findBankAccountsByVendorId"/>
+    </resultMap>
+
+    <select id="findPagedVendor" resultMap="vendorMap">
+        select *
+        from vendor
+        <where>
+        <if test="vendorGroupId != null and vendorGroupId != ''">
+            vendor_group_id = #{vendorGroupId}
+        </if>
+        <if test="vendorName != null and vendorName != ''">
+        <bind name="pattern" value="'%' + vendorName + '%'" />
+            and name like #{pattern}
+        </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper">
+
+    <select id="findBankAccountsByCompanyId" resultType="com.elnido.modules.masterdata.entity.BankAccount">
+        <include refid="bankAccountMainQuery"></include>
+        WHERE partner_id=#{id} and partner_type='C'
+    </select>
+
+    <select id="findBankAccountsByVendorId" resultType="com.elnido.modules.masterdata.entity.BankAccount">
+        <include refid="bankAccountMainQuery"></include>
+        WHERE partner_id=#{id} and partner_type='K'
+    </select>
+    
+    <sql id="bankAccountMainQuery">
+        SELECT b.*,mainbank.bank_name, banks.sub_branch_name
+        FROM partner_bankaccount_rel p
+        LEFT JOIN bank_account b ON p.bank_account_id=b.id
+        LEFT JOIN (select bank_id, bank_name from banks group by bank_id, bank_name) mainbank ON b.bank_id=mainbank.bank_id
+        LEFT JOIN banks ON b.sub_branch_id=banks.sub_branch_id
+    </sql>
+
+</mapper>
