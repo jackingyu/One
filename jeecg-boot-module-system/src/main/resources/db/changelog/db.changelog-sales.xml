@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="sales" author="jack">
+        <createTable tableName="sales_contract" remarks="销售合同">
+            <column name="id" type="varchar(32)" remarks="销售合同id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer_contract_id"/>
+            </column>
+            <column name="contract_type" type="varchar(32)" remarks="合同类型">
+            </column>
+            <column name="number" type="varchar(32)" remarks="销售合同编码">
+            </column>
+            <column name="customer_id" type="varchar(32)" remarks="客户主键">
+            </column>
+            <column name="project_id" type="varchar(32)" remarks="项目主键">
+            </column>
+            <column name="quantity" type="decimal(12,2)" remarks="数量">
+            </column>
+            <column name="bf_unit_price" type="decimal(12,2)" remarks="泵费单价">
+            </column>
+            <column name="deliver_cost_adjust" type="decimal(12,2)" remarks="运费增加">
+            </column>
+            <column name="measure_error" type="varchar(50)" remarks="计量误差">
+            </column>
+            <column name="invoice_agreement" type="tinyint(1)" remarks="税票约定">
+            </column>
+            <column name="payment_terms" type="varchar(50)" remarks="付款节点">
+            </column>
+            <column name="overdue_payment_terms" type="varchar(50)" remarks="延期付款约定">
+            </column>
+            <column name="payment_method" type="varchar(5)" remarks="支付方式">
+            </column>
+            <column name="bid_amount" type="decimal(12,2)" remarks="中标总价">
+            </column>
+            <column name="clear_method" type="varchar(32)" remarks="结算方式">
+            </column>
+            <column name="contract_amnount" type="decimal(12,2)" remarks="合同金额">
+            </column>
+            <column name="schedule_target" type="varchar(50)" remarks="工期目标">
+            </column>
+            <column name="quality_target" type="varchar(50)" remarks="质量目标">
+            </column>
+            <column name="warranty" type="varchar(20)" remarks="保修期">
+            </column>
+            <column name="saftytarget" type="varchar(50)" remarks="安全目标">
+            </column>
+            <column name="jianli_partner" type="varchar(40)" remarks="监理单位">
+            </column>
+            <column name="director" type="varchar(40)" remarks="监理单位">
+            </column>
+            <column name="project_manager" type="varchar(40)" remarks="项目经理">
+            </column>
+            <column name="contract_break" type="varchar(50)" remarks="违约责任">
+            </column>
+            <column name="comments" type="varchar(100)" remarks="备注">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+        <createTable tableName="sales_billing_document" remarks="销售结算">
+            <column name="id" type="varchar(32)" remarks="销售结算">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sales_settlement_id"/>
+            </column>
+            <column name="project_id" type="varchar(32)" remarks="项目主键">
+            </column>
+            <column name="customer_id" type="varchar(32)" remarks="客户主键">
+            </column>
+            <column name="finicial_year" type="varchar(4)" remarks="财务年度">
+            </column>
+            <column name="settlement_time" type="datetime(0)" remarks="结算时间">
+            </column>
+            <column name="settlement_amount" type="decimal(12,2)" remarks="结算时间">
+            </column>
+            <column name="late_fee" type="decimal(12,2)" remarks="滞纳金">
+            </column>
+            <column name="bid_amount" type="decimal(12,2)" remarks="中标价格">
+            </column>
+
+            <column name="comments" type="varchar(100)" remarks="备注">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+        <createTable tableName="sales_billing_document_item" remarks="销售结算行项目">
+            <column name="id" type="varchar(32)" remarks="销售结算行项目主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sales_settlement_item_id"/>
+            </column>
+            <column name="sales_settlement_id" type="varchar(32)" remarks="销售结算行项目id">
+            </column>
+            <column name="unit_code" type="varchar(5)" remarks="单位">
+            </column>
+            <column name="quantity" type="decimal(12,3)" remarks="数量">
+            </column>
+            <column name="unit_price" type="decimal(12,3)" remarks="单价">
+            </column>
+            <column name="clear_period" type="varchar(4)" remarks="商砼使用月份">
+            </column>
+            <column name="comments" type="varchar(100)" remarks="备注">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+        <createTable tableName="sales_invoice" remarks="销售开票">
+            <column name="id" type="varchar(32)" remarks="销售开票主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sales_invoice_id"/>
+            </column>
+            <column name="customer_id" type="varchar(32)" remarks="客户id">
+            </column>
+            <column name="finicial_year" type="varchar(4)" remarks="财务年度">
+            </column>
+            <column name="contract_content" type="varchar(255)" remarks="合同实施内容">
+            </column>
+            <column name="material_id" type="varchar(32)" remarks="物料数据主键">
+            </column>
+            <column name="material_description" type="varchar(100)" remarks="物料描述">
+            </column>
+            <column name="invoice_date" type="datetime(0)" remarks="开票日期">
+            </column>
+            <column name="amount" type="decimal(12,2)" remarks="开票金额">
+            </column>
+            <column name="invoice_number" type="varchar(50)" remarks="发票号码">
+            </column>
+            <column name="tax_rate" type="decimal(12,2)" remarks="税率">
+            </column>
+            <column name="comments" type="varchar(100)" remarks="备注">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+        <createTable tableName="sales_receipt" remarks="销售收款">
+            <column name="id" type="varchar(32)" remarks="销售收款单">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sales_receipt_id"/>
+            </column>
+            <column name="customer_id" type="varchar(32)" remarks="客户id">
+            </column>
+            <column name="finicial_year" type="varchar(4)" remarks="财务年度">
+            </column>
+            <column name="payment_method" type="varchar(5)" remarks="付款方式">
+            </column>
+            <column name="receipt_date" type="datetime(0)" remarks="收款日期">
+            </column>
+            <column name="amount" type="datetime(0)" remarks="收款金额">
+            </column>
+            <column name="bank_id" type="varchar(32)" remarks="银行主键">
+            </column>
+            <column name="bank_name" type="varchar(50)" remarks="银行名称">
+            </column>
+            <column name="subbranch_id" type="varchar(32)" remarks="支行主键">
+            </column>
+            <column name="subbranch_name" type="varchar(50)" remarks="支行名称">
+            </column>
+            <column name="account_name" type="varchar(50)" remarks="银行账号名称">
+            </column>
+            <column name="account_number" type="varchar(50)" remarks="银行账号">
+            </column>
+            <column name="comments" type="varchar(100)" remarks="备注">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

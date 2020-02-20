@@ -24,6 +24,7 @@ spring:
     basename: static/i18n/messages
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
   mail:
     host: smtp.163.com
     username: jeecgos@163.com
