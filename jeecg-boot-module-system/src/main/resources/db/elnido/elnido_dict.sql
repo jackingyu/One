@@ -30,3 +30,14 @@ INSERT INTO `sys_dict_item` (`id`, `dict_id`, `item_text`, `item_value`, `descri
 VALUES ('404146de8eea4455a0fa8472168ba44e', '064ff911ed4d401696c105f2b4fb6220', '水泥材料商', '2', '', 2, '1', 'admin', '2020-02-09 00:00:00', NULL, NULL);
 INSERT INTO `sys_dict_item` (`id`, `dict_id`, `item_text`, `item_value`, `description`, `sort_order`, `status`, `create_by`, `create_time`, `update_by`, `update_time`)
 VALUES ('c83341327ca3442891ff88ea8c45055f', '064ff911ed4d401696c105f2b4fb6220', '黄沙材料商', '3', '', 2, '1', 'admin', '2020-02-09 00:00:00', NULL, NULL);
+
+-- 字典：客户类型
+INSERT INTO `sys_dict` (`id`, `dict_name`, `dict_code`, `description`, `del_flag`, `create_by`, `create_time`, `update_by`, `update_time`, `type`)
+VALUES ('5265a67e79e34060a556e608ae3e5125', '供应商分组', 'customer_group', '客户分组', '0', 'admin', '2020-02-09 00:00:00', 'admin', '2020-02-09 00:00:00', '0');
+
+INSERT INTO `sys_dict_item` (`id`, `dict_id`, `item_text`, `item_value`, `description`, `sort_order`, `status`, `create_by`, `create_time`, `update_by`, `update_time`)
+VALUES ('c578865104f84deea11c712225718ec1', '5265a67e79e34060a556e608ae3e5125', '材料商', '1', '', 1, '1', 'admin', '2020-02-09 00:00:00', NULL, NULL);
+INSERT INTO `sys_dict_item` (`id`, `dict_id`, `item_text`, `item_value`, `description`, `sort_order`, `status`, `create_by`, `create_time`, `update_by`, `update_time`)
+VALUES ('dd411151c574461e97041baba07b9bdd', '5265a67e79e34060a556e608ae3e5125', '分包商', '2', '', 2, '1', 'admin', '2020-02-09 00:00:00', NULL, NULL);
+INSERT INTO `sys_dict_item` (`id`, `dict_id`, `item_text`, `item_value`, `description`, `sort_order`, `status`, `create_by`, `create_time`, `update_by`, `update_time`)
+VALUES ('6a5b8473e7c44f46a383ff579f03352e', '5265a67e79e34060a556e608ae3e5125', '建设单位', '3', '', 2, '1', 'admin', '2020-02-09 00:00:00', NULL, NULL);

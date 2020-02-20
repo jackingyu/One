@@ -133,3 +133,24 @@ CREATE TABLE `project`  (
    PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer`  (
+  `id` varchar(32) NOT NULL ,
+  `customer_code` varchar(20) NOT NULL ,
+  `name` varchar(20) ,
+  `customer_group` varchar(10) ,
+  `contact_person` varchar(20) ,
+  `contact_phone` varchar(30) ,
+  `contact_person_id` varchar(30) ,
+  `social_credit_code` varchar(30) ,
+  `tax_subject` varchar(20) ,
+  `business_license` varchar(30) ,
+  `tax_code` varchar(30) ,
+  `comments` varchar(255) ,
+  `create_by` varchar(32) ,
+  `create_time` TIMESTAMP ,
+  `update_by` varchar(32) ,
+  `update_time` TIMESTAMP ,
+  `del_flag` tinyint(1) DEFAULT 0 ,
+  PRIMARY KEY (`id`)
+);
