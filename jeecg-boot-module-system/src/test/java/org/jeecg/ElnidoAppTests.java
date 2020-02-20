@@ -8,7 +8,8 @@ import org.junit.runners.Suite;
   MaterialTest.class,
   BankTest.class,
   CompanyTest.class,
-  VendorTest.class
+  VendorTest.class,
+  ProjectTest.class
 })
 public class ElnidoAppTests {
 }

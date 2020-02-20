@@ -1,6 +1,7 @@
 package com.elnido.modules.masterdata.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,7 +13,6 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -21,28 +21,32 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("vendor_group")
-@ApiModel(value = "供应商组对象", description = "供应商组表")
-public class VendorGroup implements Serializable {
+@TableName("project")
+@ApiModel(value = "项目对象", description = "项目表")
+public class Project {
 
-    /**
-     * id
-     */
     @TableId(type = IdType.ID_WORKER_STR)
     @ApiModelProperty(value = "id")
-    @JsonIgnore
     private String id;
 
-    @ApiModelProperty(value = "供应商组名称")
-    private String vendorGroupName;
+    @ApiModelProperty(value = "公司ID")
+    private String companyId;
 
-    @ApiModelProperty(value = "供应商组编码")
-    private String vendorGroupCode;
+    @ApiModelProperty(value = "项目名称")
+    private String name;
+
+    @ApiModelProperty(value = "备注")
+    private String comments;
+
+    @TableField(exist = false)
+    @ApiModelProperty(hidden = true)
+    private Company company;
+
+
 
     /**
      * 创建人
      */
-    @ApiModelProperty(value = "创建人")
     @JsonIgnore
     private String createBy;
 
@@ -51,20 +55,17 @@ public class VendorGroup implements Serializable {
      */
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     /**
      * 更新人
      */
-    @ApiModelProperty(value = "修改人")
     @JsonIgnore
     private String updateBy;
 
     /**
      * 更新时间
      */
-    @ApiModelProperty(value = "修改时间")
     @JsonIgnore
     private Date updateTime;
 }
