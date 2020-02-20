@@ -17,11 +17,12 @@ public interface Partner2BankAccountMapper extends BaseMapper<Partner2BankAccoun
      * @param id
      * @return
      */
-    @Select(" SELECT b.*,mainbank.bank_name, banks.sub_branch_name " +
-            " FROM partner_bankaccount_rel p " +
-            " LEFT JOIN bank_account b ON p.bank_account_id=b.id " +
-            " LEFT JOIN (select bank_id, bank_name from banks group by bank_id, bank_name) mainbank ON b.bank_id=mainbank.bank_id " +
-            " LEFT JOIN banks ON b.sub_branch_id=banks.sub_branch_id " +
-            " WHERE partner_id=#{id} and partner_type='C' ")
     List<BankAccount> findBankAccountsByCompanyId(String id);
+
+    /**
+     * 根据供应商ID查询对应的银行账户
+     * @param id
+     * @return
+     */
+    List<BankAccount> findBankAccountsByVendorId(String id);
 }

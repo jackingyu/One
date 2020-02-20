@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Company;
+import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.model.CompanyPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.CompanyService;
@@ -94,7 +95,7 @@ public class CompanyController {
         if (count == 0) {
             return Result.error(HttpStatus.NOT_FOUND.value(), messageUtils.get(RECORD_NOT_EXIST_KEY));
         }
-        boolean deleted = bankAccountService.removeBankAccountByBankAccountId(bankAccountId);
+        boolean deleted = bankAccountService.removeBankAccountByBankAccountIdAndPartnerType(bankAccountId, PartnerTypeEnum.COMPANY);
         result.setSuccess(deleted);
         result.setResult(deleted);
 
