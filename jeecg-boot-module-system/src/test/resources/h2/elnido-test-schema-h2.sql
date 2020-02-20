@@ -1,15 +1,33 @@
-DROP TABLE IF EXISTS `material_group`;
-CREATE TABLE `material_group`  (
-  `id` varchar(32) ,
-  `material_group_name` varchar(255) DEFAULT NULL ,
-  `material_group_code` int(11) DEFAULT NULL ,
-  `create_by` varchar(32) DEFAULT NULL ,
+DROP TABLE IF EXISTS `sys_dict`;
+CREATE TABLE `sys_dict`  (
+  `id` varchar(32) NOT NULL ,
+  `dict_name` varchar(100) ,
+  `dict_code` varchar(100) ,
+  `description` varchar(255) ,
+  `del_flag` int(1) ,
+  `create_by` varchar(32) ,
   `create_time` TIMESTAMP ,
-  `update_by` varchar(32) DEFAULT NULL ,
+  `update_by` varchar(32) ,
   `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0
+  `type` int(1) ,
+  PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `sys_dict_item`;
+CREATE TABLE `sys_dict_item`  (
+  `id` varchar(32) ,
+  `dict_id` varchar(32) ,
+  `item_text` varchar(100) ,
+  `item_value` varchar(100) ,
+  `description` varchar(255) ,
+  `sort_order` int(10) ,
+  `status` int(11) ,
+  `create_by` varchar(32) ,
+  `create_time` TIMESTAMP ,
+  `update_by` varchar(32) ,
+  `update_time` TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
 
 DROP TABLE IF EXISTS `material`;
 CREATE TABLE `material`  (
@@ -18,6 +36,7 @@ CREATE TABLE `material`  (
   `material_description` varchar(255)  DEFAULT NULL ,
   `material_code` varchar(255) DEFAULT NULL ,
   `material_group_code` int(11) DEFAULT NULL,
+  `one_time_flag` int(1) DEFAULT 0 ,
   `create_by` varchar(32) DEFAULT NULL ,
   `create_time` TIMESTAMP ,
   `update_by` varchar(32) DEFAULT NULL,

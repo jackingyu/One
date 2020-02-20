@@ -6,8 +6,6 @@ import com.elnido.modules.masterdata.mapper.MaterialMapper;
 import com.elnido.modules.masterdata.model.MaterialPage;
 import com.elnido.modules.masterdata.service.MaterialService;
 import com.elnido.modules.masterdata.service.ServicesUtil;
-import com.elnido.modules.masterdata.vo.MaterialVO;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,9 +19,8 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     @Resource
     private MaterialMapper materialMapper;
 
-
     @Override
-    public MaterialPage<MaterialVO> findPagedMaterials(MaterialPage<MaterialVO> materialPage) {
+    public MaterialPage<Material> findPagedMaterials(MaterialPage<Material> materialPage) {
         return materialMapper.findPagedMaterials(materialPage);
     }
 

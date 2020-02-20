@@ -4,29 +4,19 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Company;
-import com.elnido.modules.masterdata.entity.Material;
-import com.elnido.modules.masterdata.entity.MaterialGroup;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.model.CompanyPage;
-import com.elnido.modules.masterdata.model.MaterialPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.CompanyService;
-import com.elnido.modules.masterdata.service.MaterialGroupService;
-import com.elnido.modules.masterdata.service.MaterialService;
-import com.elnido.modules.masterdata.vo.MaterialSearchVO;
-import com.elnido.modules.masterdata.vo.MaterialVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.util.MessageUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Objects;
 
 import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EXIST_KEY;
 
