@@ -6,15 +6,13 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Customer;
-import com.elnido.modules.masterdata.entity.Vendor;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
-import com.elnido.modules.masterdata.model.VendorPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.CustomerService;
-import com.elnido.modules.masterdata.service.VendorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.util.MessageUtils;
 import org.springframework.http.HttpStatus;
@@ -51,7 +49,8 @@ public class CustomerController {
         Result<IPage<Customer>> result = new Result<>();
 
         IPage<Customer> customerIPage = new Page<>(pageNo, pageSize);
-        LambdaQueryWrapper<Customer> lambdaQueryWrapper = Wrappers.<Customer>lambdaQuery().like(Customer::getName, name);
+        LambdaQueryWrapper<Customer> lambdaQueryWrapper =
+                Wrappers.<Customer>lambdaQuery().like(StringUtils.isNotBlank(name), Customer::getCustomerName, name);
         IPage<Customer> queriedCustomerPage = customerService.page(customerIPage, lambdaQueryWrapper);
         result.setResult(queriedCustomerPage);
         result.setSuccess(true);

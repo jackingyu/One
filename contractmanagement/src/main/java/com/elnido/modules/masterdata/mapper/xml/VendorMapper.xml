@@ -4,15 +4,15 @@
 
     <resultMap id="vendorMap" type="com.elnido.modules.masterdata.entity.Vendor">
         <result column="id" property="id"/>
-        <result column="code" property="code"/>
-        <result column="name" property="name"/>
+        <result column="vendor_ode" property="vendorCode"/>
+        <result column="vendor_name" property="vendorName"/>
         <result column="contact_person_id" property="contactPersonId"/>
         <result column="contact_phone" property="contactPhone"/>
         <result column="social_credit_code" property="socialCreditCode"/>
         <result column="tax_subject" property="taxSubject"/>
         <result column="business_license" property="businessLicense"/>
         <result column="tax_code" property="taxCode"/>
-        <result column="vendor_group_id" property="vendorGroupId"/>
+        <result column="vendor_group_code" property="vendorGroupCode"/>
         <collection property="bankAccounts" column="id"
                     select="com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper.findBankAccountsByVendorId"/>
     </resultMap>
@@ -21,8 +21,8 @@
         select *
         from vendor
         <where>
-        <if test="vendorGroupId != null and vendorGroupId != ''">
-            vendor_group_id = #{vendorGroupId}
+        <if test="vendorGroupCode != null and vendorGroupCode != ''">
+            vendor_group_code = #{vendorGroupCode}
         </if>
         <if test="vendorName != null and vendorName != ''">
         <bind name="pattern" value="'%' + vendorName + '%'" />

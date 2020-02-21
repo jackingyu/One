@@ -5,12 +5,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.elnido.modules.masterdata.entity.Company;
 import com.elnido.modules.masterdata.entity.Project;
-import com.elnido.modules.masterdata.entity.Vendor;
 import com.elnido.modules.masterdata.model.ProjectPage;
-import com.elnido.modules.masterdata.model.VendorPage;
 import com.elnido.modules.masterdata.service.CompanyService;
 import com.elnido.modules.masterdata.service.ProjectService;
-import com.elnido.modules.masterdata.service.VendorService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -44,7 +41,7 @@ public class ProjectTest extends BaseTest{
 	private Project createMockProject(String companyId, String name, String comments) {
 		Project project = new Project();
 		project.setCompanyId(companyId);
-		project.setName(name);
+		project.setProjectName(name);
 		project.setComments(comments);
 		return project;
 	}
@@ -66,17 +63,6 @@ public class ProjectTest extends BaseTest{
 		Assert.assertThat(queriedAssociateCompany, notNullValue());
 		Assert.assertThat(queriedAssociateCompany.getId(), is(companyId));
 		Assert.assertThat(queriedAssociateCompany.getCompanyName(), is("test_company_for_project_name"));
-	}
-
-	@Test
-	@Sql(executionPhase = BEFORE_TEST_METHOD, scripts = "classpath:h2/project/setup-project-data-h2.sql")
-	public void b_test_find_paged_projects() {
-		ProjectPage<Project> projectPage = new ProjectPage<>(1,2);
-		LambdaQueryWrapper<Project> lambdaQueryWrapper = Wrappers.<Project>lambdaQuery().like(Project::getName, "001");
-		IPage<Project> projectIPage = projectService.page(projectPage, lambdaQueryWrapper);
-		Assert.assertThat(projectIPage, notNullValue());
-		Assert.assertThat(projectIPage.getRecords(), notNullValue());
-		Assert.assertThat(projectIPage.getRecords().size(), is(1));
 	}
 
 }

@@ -44,14 +44,14 @@ public class Customer implements Serializable {
     private String customerCode;
 
     @ApiModelProperty(value = "客户名称")
-    private String name;
+    private String customerName;
 
     @ApiModelProperty(value = "联络人")
     private String contactPerson;
 
-    @ApiModelProperty(value = "客户ID")
+    @ApiModelProperty(value = "用户组编码")
     @Dict(dicCode = "customer_group")
-    private String customerGroup;
+    private Integer customerGroupCode;
 
     @ApiModelProperty(value = "联络人身份证号码")
     private String contactPersonId;

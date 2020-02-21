@@ -37,17 +37,17 @@ public class Vendor implements Serializable {
     private String id;
 
     @ApiModelProperty(value = "供应商编码")
-    private String code;
+    private String vendorCode;
 
     @ApiModelProperty(value = "供应商名称")
-    private String name;
+    private String vendorName;
 
     @ApiModelProperty(value = "联络人")
     private String contactPerson;
 
     @ApiModelProperty(value = "供应商分组ID")
     @Dict(dicCode = "vendor_group")
-    private String vendorGroupId;
+    private String vendorGroupCode;
 
     @ApiModelProperty(value = "联络人身份证号码")
     private String contactPersonId;
