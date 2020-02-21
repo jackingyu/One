@@ -31,7 +31,7 @@ import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EX
 @Slf4j
 @Api(tags = "供应商维护")
 @RestController
-@RequestMapping("/masterdata/vendors")
+@RequestMapping("/masterdata/vendors/")
 public class VendorController {
 
     @Resource
@@ -46,7 +46,7 @@ public class VendorController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping("/vendorgroups")
+    @GetMapping("vendorgroups")
     @ApiOperation(value = "供应商分组表-查询所有供应商组", notes = "供应商分组表-查询所有供应商组")
     public Result<?> searchAllVendorGroups() {
         Result<List<VendorGroup>> result = new Result<>();
@@ -61,7 +61,7 @@ public class VendorController {
         return result;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     @ApiOperation(value = "供应商表-按条件查询供应商信息", notes = "供应商表-按条件查询供应商")
     public Result<VendorPage<Vendor>> pagedSearchVendors(@RequestParam(name = "vendorGroupId", required = false) String vendorGroupId,
                                                          @RequestParam(name = "name", required = false) String name,
@@ -78,7 +78,7 @@ public class VendorController {
         return result;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     @ApiOperation(value = "供应商表-新建供应商信息", notes = "供应商表-新建供应商")
     public Result<Vendor> createCompany(@RequestBody Vendor vendor) {
         Result<Vendor> result = new Result<>();
@@ -92,7 +92,7 @@ public class VendorController {
         return result;
     }
 
-    @DeleteMapping("/bankaccount/{bankAccountId}")
+    @DeleteMapping("bankaccount/{bankAccountId}")
     @ApiOperation(value = "供应商表-删除供应商银行账户信息", notes = "供应商表-删除供应商银行账户信息")
     public Result<?> deleteBank(@PathVariable String bankAccountId) {
         Result<Boolean> result = new Result<>();

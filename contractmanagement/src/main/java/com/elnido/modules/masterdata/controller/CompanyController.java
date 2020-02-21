@@ -26,7 +26,7 @@ import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EX
 @Slf4j
 @Api(tags = "公司维护")
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/company/")
 public class CompanyController {
 
     @Resource
@@ -38,7 +38,7 @@ public class CompanyController {
     @Resource
     private BankAccountService bankAccountService;
 
-    @GetMapping("/")
+    @GetMapping()
     @ApiOperation(value = "公司表-按条件查询公司信息", notes = "公司表-按条件查询公司")
     public Result<CompanyPage<Company>> pagedSearchCompanies(@RequestParam(name = "companyName", required = false) String companyName,
                                                              @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -53,7 +53,7 @@ public class CompanyController {
         return result;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     @ApiOperation(value = "公司表-按ID查询公司全部信息", notes = "公司表-按ID查询公司全部信息")
     public Result<?> queryCompanyInfoById(@PathVariable String id) {
         Result<Company> result = new Result<>();
@@ -70,7 +70,7 @@ public class CompanyController {
         return result;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     @ApiOperation(value = "公司表-新建公司信息", notes = "公司表-新建公司")
     public Result<Company> createCompany(@RequestBody Company company) {
         Result<Company> result = new Result<>();
