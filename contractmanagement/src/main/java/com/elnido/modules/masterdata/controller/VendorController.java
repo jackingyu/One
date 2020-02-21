@@ -40,7 +40,7 @@ public class VendorController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping("/")
+    @GetMapping()
     @ApiOperation(value = "供应商表-按条件查询供应商信息", notes = "供应商表-按条件查询供应商")
     public Result<IPage<Vendor>> pagedSearchVendors(@RequestParam(name = "vendorGroupCode", required = false) String vendorGroupCode,
                                                          @RequestParam(name = "vendorName", required = false) String vendorName,
@@ -57,7 +57,7 @@ public class VendorController {
         return result;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     @ApiOperation(value = "供应商表-新建供应商信息", notes = "供应商表-新建供应商")
     public Result<Vendor> createCompany(@RequestBody Vendor vendor) {
         Result<Vendor> result = new Result<>();
