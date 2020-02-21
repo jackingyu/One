@@ -1,18 +1,18 @@
 -- 供应商
 INSERT INTO `vendor` (id, code, name, contact_person, vendor_group_id, contact_person_id, contact_phone, social_credit_code, tax_subject, business_license, tax_code, create_by, create_time)
-VALUES ('03290ba50c8d4cbc9b5f28ac4af51e1d','供应商001', '供应商001名称', '供应商001联系人', 'a0b70f81423141cd8bb2d57b2e6bbab1', '供应商001联系人身份证', '供应商001电话', '供应商001社会信用代码', '供应商001纳税人资格', '供应商001营业执照号码', '供应商001税务登记号', 'vendoradmin', now());
+VALUES ('03290ba50c8d4cbc9b5f28ac4af51e1d','vendor001', 'vendor001name', 'vendor001cp', 'a0b70f81423141cd8bb2d57b2e6bbab1', 'vendor001cpid', 'vendor001phone', 'vendor001scc', 'vendor001ts', 'vendor001bl', 'vendor001tc', 'vendoradmin', now());
 
 INSERT INTO `vendor` (id, code, name, contact_person, vendor_group_id, contact_person_id, contact_phone, social_credit_code, tax_subject, business_license, tax_code, create_by, create_time)
-VALUES ('ab67937b1f4444d68eb984bf814434cc','供应商002', '供应商002名称', '供应商002联系人', '3fef33a8c7094fdca53a78b96228aa4c', '供应商002联系人身份证', '供应商002电话', '供应商002社会信用代码', '供应商002纳税人资格', '供应商002营业执照号码', '供应商002税务登记号', 'vendoradmin', now());
+VALUES ('ab67937b1f4444d68eb984bf814434cc','vendor002', 'vendor002name', 'vendor002cp', '3fef33a8c7094fdca53a78b96228aa4c', 'vendor002cpid', 'vendor002phone', 'vendor002scc', 'vendor002ts', 'vendor002bl', 'vendor002tc', 'vendoradmin', now());
 
 INSERT INTO `vendor` (id, code, name, contact_person, vendor_group_id, contact_person_id, contact_phone, social_credit_code, tax_subject, business_license, tax_code, create_by, create_time)
-VALUES ('1729ec0c8da047cfbe895605d8ef1593','供应商003', '供应商003名称', '供应商003联系人', '662e256ad84742dfb708573e8a3ea92e', '供应商003联系人身份证', '供应商003电话', '供应商003社会信用代码', '供应商003纳税人资格', '供应商003营业执照号码', '供应商003税务登记号', 'vendoradmin', now());
+VALUES ('1729ec0c8da047cfbe895605d8ef1593','vendor003', 'vendor003name', 'vendor003cp', '662e256ad84742dfb708573e8a3ea92e', 'vendor003cpid', 'vendor003phone', 'vendor003scc', 'vendor003ts', 'vendor003bl', 'vendor003tc', 'vendoradmin', now());
 
 INSERT INTO `vendor` (id, code, name, contact_person, vendor_group_id, contact_person_id, contact_phone, social_credit_code, tax_subject, business_license, tax_code, create_by, create_time)
-VALUES ('d81a892a00cb43679d7860c69fdab62f','供应商004', '供应商004名称', '供应商004联系人', 'a0b70f81423141cd8bb2d57b2e6bbab1', '供应商004联系人身份证', '供应商004电话', '供应商004社会信用代码', '供应商004纳税人资格', '供应商004营业执照号码', '供应商004税务登记号', 'vendoradmin', now());
+VALUES ('d81a892a00cb43679d7860c69fdab62f','vendor004', 'vendor004name', 'vendor004cp', 'a0b70f81423141cd8bb2d57b2e6bbab1', 'vendor004cpid', 'vendor004phone', 'vendor004scc', 'vendor004ts', 'vendor004bl', 'vendor004tc', 'vendoradmin', now());
 
 INSERT INTO `vendor` (id, code, name, contact_person, vendor_group_id, contact_person_id, contact_phone, social_credit_code, tax_subject, business_license, tax_code, create_by, create_time)
-VALUES ('6b3acb4d499b45eabb2ac857e650db11','供应商005', '供应商005名称', '供应商005联系人', 'a0b70f81423141cd8bb2d57b2e6bbab1', '供应商005联系人身份证', '供应商005电话', '供应商005社会信用代码', '供应商005纳税人资格', '供应商005营业执照号码', '供应商005税务登记号', 'vendoradmin', now());
+VALUES ('6b3acb4d499b45eabb2ac857e650db11','vendor005', 'vendor005name', 'vendor005cp', 'a0b70f81423141cd8bb2d57b2e6bbab1', 'vendor005cpid', 'vendor005phone', 'vendor005scc', 'vendor005ts', 'vendor005bl', 'vendor005tc', 'vendoradmin', now());
 
 -- 银行账户
 INSERT INTO `bank_account` (id, bank_id, sub_branch_id, bank_account_name, bank_account,create_by, create_time)

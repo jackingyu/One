@@ -71,6 +71,7 @@ spring:
     data: classpath:db/elnido/elnido_dict.sql,classpath:h2/elnido-test-data-h2.sql
     platform: h2
     initialization-mode: always
+    sql-script-encoding: UTF-8
   #redis 配置
   redis:
     database: 0

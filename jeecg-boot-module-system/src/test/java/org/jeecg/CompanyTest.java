@@ -137,7 +137,7 @@ public class CompanyTest extends BaseTest{
 		Assert.assertThat(bankAccount.getBankId(), is("1001"));
 		Assert.assertThat(bankAccount.getSubBranchId(), is("10011111011"));
 		Assert.assertThat(bankAccount.getBankAccount(), is("11111111111111111"));
-		Assert.assertThat(bankAccount.getBankAccountName(), is("测试银行账户001"));
+		Assert.assertThat(bankAccount.getBankAccountName(), is("testbank001"));
 
 		boolean removeBankAccount = bankAccountService.removeBankAccountByBankAccountIdAndPartnerType(IMPORTED_FIRST_BANK_ACCOUNT, PartnerTypeEnum.COMPANY);
 		Assert.assertThat(removeBankAccount, is(true));
