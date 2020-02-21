@@ -16,13 +16,13 @@ VALUES ('f74b9926bb3946ba8ef513fd79e8bb91','测试公司005', '测试公司005�
 
 -- 银行账户
 INSERT INTO `bank_account` (id, bank_id, sub_branch_id, bank_account_name, bank_account,create_by, create_time)
-VALUES ('8f1556b40937492bb1fbeeba086fc110','1001', '10011111011', '测试银行账户001', '11111111111111111', 'partneradmin', now());
+VALUES ('8f1556b40937492bb1fbeeba086fc110','1001', '10011111011', 'testbank001', '11111111111111111', 'partneradmin', now());
 
 INSERT INTO `bank_account` (id, bank_id, sub_branch_id, bank_account_name, bank_account, create_by, create_time)
-VALUES ('c2c755524e6c40fcba1b8632d6c311b0','1001', '10011111012', '测试银行账户002', '22222222222222222', 'partneradmin', now());
+VALUES ('c2c755524e6c40fcba1b8632d6c311b0','1001', '10011111012', 'testbank002', '22222222222222222', 'partneradmin', now());
 
 INSERT INTO `bank_account` (id, bank_id, sub_branch_id, bank_account_name, bank_account, create_by, create_time)
-VALUES ('f24c34579de64f13825d47d0319a1a3f','1001', '10011111013', '测试银行账户003', '33333333333333333', 'partneradmin', now());
+VALUES ('f24c34579de64f13825d47d0319a1a3f','1001', '10011111013', 'testbank003', '33333333333333333', 'partneradmin', now());
 
 -- 合作伙伴-银行账户关系
 INSERT INTO `partner_bankaccount_rel` (id, partner_id, bank_account_id, partner_type, create_by, create_time)
