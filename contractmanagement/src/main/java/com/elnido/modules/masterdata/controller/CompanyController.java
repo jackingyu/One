@@ -1,22 +1,29 @@
 package com.elnido.modules.masterdata.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Company;
+import com.elnido.modules.masterdata.entity.Material;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.model.CompanyPage;
+import com.elnido.modules.masterdata.model.MaterialPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.CompanyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
+import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.MessageUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EXIST_KEY;
 
@@ -40,15 +47,16 @@ public class CompanyController {
 
     @GetMapping()
     @ApiOperation(value = "公司表-按条件查询公司信息", notes = "公司表-按条件查询公司")
-    public Result<CompanyPage<Company>> pagedSearchCompanies(@RequestParam(name = "companyName", required = false) String companyName,
-                                                             @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                                                             @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
-        Result<CompanyPage<Company>> result = new Result<>();
-        CompanyPage<Company> companyPage = new CompanyPage(pageNo, pageSize);
-        companyPage.setCompanyName(companyName);
-
-        CompanyPage<Company> pagedCompanies = companyService.findPagedCompanies(companyPage);
-        result.setResult(pagedCompanies);
+    public Result<IPage<Company>> pagedSearchCompanies(Company company,
+                                                       @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                                       @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                                       HttpServletRequest httpServletRequest) {
+        Result<IPage<Company>> result = new Result<>();
+        IPage<Company> companyPage = new Page(pageNo, pageSize);
+        
+        QueryWrapper<Company> queryWrapper = QueryGenerator.initQueryWrapper(company, httpServletRequest.getParameterMap());
+        IPage<Company> queriedCompanyPage = companyService.page(companyPage, queryWrapper);
+        result.setResult(queriedCompanyPage);
         result.setSuccess(true);
         return result;
     }

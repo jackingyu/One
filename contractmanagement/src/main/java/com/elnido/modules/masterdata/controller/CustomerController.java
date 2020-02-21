@@ -1,10 +1,12 @@
 package com.elnido.modules.masterdata.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elnido.modules.masterdata.entity.BankAccount;
+import com.elnido.modules.masterdata.entity.Company;
 import com.elnido.modules.masterdata.entity.Customer;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.service.BankAccountService;
@@ -14,11 +16,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.api.vo.Result;
+import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.MessageUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EXIST_KEY;
@@ -41,23 +45,23 @@ public class CustomerController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping("/")
+    @GetMapping()
     @ApiOperation(value = "客户表-按条件查询客户信息", notes = "客户表-按条件查询客户")
-    public Result<IPage<Customer>> pagedSearchVendors(@RequestParam(name = "name", required = false) String name,
+    public Result<IPage<Customer>> pagedSearchVendors(Customer customer,
                                                       @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                                                      @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+                                                      @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                                      HttpServletRequest httpServletRequest) {
         Result<IPage<Customer>> result = new Result<>();
 
         IPage<Customer> customerIPage = new Page<>(pageNo, pageSize);
-        LambdaQueryWrapper<Customer> lambdaQueryWrapper =
-                Wrappers.<Customer>lambdaQuery().like(StringUtils.isNotBlank(name), Customer::getCustomerName, name);
-        IPage<Customer> queriedCustomerPage = customerService.page(customerIPage, lambdaQueryWrapper);
-        result.setResult(queriedCustomerPage);
+        QueryWrapper<Customer> queryWrapper = QueryGenerator.initQueryWrapper(customer, httpServletRequest.getParameterMap());
+        IPage<Customer> queriedPagedCustomer = customerService.page(customerIPage, queryWrapper);
+        result.setResult(queriedPagedCustomer);
         result.setSuccess(true);
         return result;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     @ApiOperation(value = "客户表-新建客户信息", notes = "客户表-新建客户")
     public Result<Customer> createCompany(@RequestBody @Valid Customer customer) {
         Result<Customer> result = new Result<>();
