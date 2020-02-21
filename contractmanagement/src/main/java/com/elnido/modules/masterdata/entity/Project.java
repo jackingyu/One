@@ -33,7 +33,7 @@ public class Project {
     private String companyId;
 
     @ApiModelProperty(value = "项目名称")
-    private String name;
+    private String projectName;
 
     @ApiModelProperty(value = "备注")
     private String comments;

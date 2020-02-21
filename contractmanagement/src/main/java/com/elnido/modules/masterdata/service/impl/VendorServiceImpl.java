@@ -5,7 +5,6 @@ import com.elnido.modules.masterdata.entity.Partner2BankAccount;
 import com.elnido.modules.masterdata.entity.Vendor;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.mapper.VendorMapper;
-import com.elnido.modules.masterdata.model.VendorPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.Partner2BankAccountService;
 import com.elnido.modules.masterdata.service.VendorService;
@@ -28,14 +27,6 @@ public class VendorServiceImpl extends ServiceImpl<VendorMapper, Vendor> impleme
 
     @Resource
     private Partner2BankAccountService partner2BankAccountService;
-
-    @Resource
-    private VendorMapper vendorMapper;
-
-    @Override
-    public VendorPage<Vendor> findPagedVendor(VendorPage<Vendor> vendorPage) {
-        return vendorMapper.findPagedVendor(vendorPage);
-    }
 
     @Override
     @Transactional(rollbackFor = Exception.class)

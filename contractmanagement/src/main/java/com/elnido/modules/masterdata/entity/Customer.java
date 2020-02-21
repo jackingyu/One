@@ -14,6 +14,9 @@ import lombok.experimental.Accessors;
 import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -24,9 +27,9 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("vendor")
-@ApiModel(value = "供应商对象", description = "供应商表")
-public class Vendor implements Serializable {
+@TableName("customer")
+@ApiModel(value = "客户对象", description = "客户表")
+public class Customer implements Serializable {
 
     /**
      * id
@@ -36,18 +39,19 @@ public class Vendor implements Serializable {
     @JsonIgnore
     private String id;
 
-    @ApiModelProperty(value = "供应商编码")
-    private String vendorCode;
+    @ApiModelProperty(value = "客户编码")
+    @NotEmpty(message = "{elnido.validation.general.shouldnotempty}")
+    private String customerCode;
 
-    @ApiModelProperty(value = "供应商名称")
-    private String vendorName;
+    @ApiModelProperty(value = "客户名称")
+    private String customerName;
 
     @ApiModelProperty(value = "联络人")
     private String contactPerson;
 
-    @ApiModelProperty(value = "供应商分组ID")
-    @Dict(dicCode = "vendor_group")
-    private String vendorGroupCode;
+    @ApiModelProperty(value = "用户组编码")
+    @Dict(dicCode = "customer_group")
+    private Integer customerGroupCode;
 
     @ApiModelProperty(value = "联络人身份证号码")
     private String contactPersonId;

@@ -6,9 +6,14 @@
 
     <changeSet id="drop_tb" author="jack">
         <sql>
+            DROP TABLE IF EXISTS `material`;
+            DROP TABLE IF EXISTS `company`;
+            DROP TABLE IF EXISTS `bank_account`;
+            DROP TABLE IF EXISTS `partner_bankaccount_rel`;
             DROP TABLE IF EXISTS `vendor`;
-            DROP TABLE IF EXISTS `customer`;
             DROP TABLE IF EXISTS `project`;
+            DROP TABLE IF EXISTS `customer`;
+
             DROP TABLE IF EXISTS `purchase_contract`;
             DROP TABLE IF EXISTS `purchase_contract_item`;
             DROP TABLE IF EXISTS `vendor_invoice`;
@@ -22,121 +27,165 @@
             DROP TABLE IF EXISTS `sales_billing_document`;
             DROP TABLE IF EXISTS `sales_billing_document_item`;
         </sql>
-      <!--      <dropTable schemaName="elnido" tableName="vendor"/>
-            <dropTable schemaName="elnido" tableName="customer"/>
-            <dropTable schemaName="elnido" tableName="project"/>
-            <dropTable schemaName="elnido" tableName="purchase_contract"/>
-            <dropTable schemaName="elnido" tableName="purchase_contract_item"/>
-            <dropTable schemaName="elnido" tableName="vendor_invoice"/>
-            <dropTable schemaName="elnido" tableName="vendor_payment"/>
-            <dropTable schemaName="elnido" tableName="vendor_settlement"/>
-            <dropTable schemaName="elnido" tableName="vendor_settlement_item"/>
-            <dropTable schemaName="elnido" tableName="sales_contract"/>
-            <dropTable schemaName="elnido" tableName="sales_contract_item"/>
-            <dropTable schemaName="elnido" tableName="sales_receipt"/>
-            <dropTable schemaName="elnido" tableName="sales_invoice"/>-->
     </changeSet>
 
     <changeSet id="master_data" author="jack">
+        <createTable tableName="material" remarks="物料">
+            <column name="id" type="varchar(32)" remarks="物料主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_material_id"/>
+            </column>
+            <column name="material_code" type="varchar(32)" remarks="物料代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_name" type="varchar(32)" remarks="物料名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_group_code" type="int" remarks="物料组代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="one_time_flag" type="int" defaultValue="0" remarks="一次性物料标记, 0-一次性物料 1-非一次性物料">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_description" type="varchar(255)" remarks="物料描述"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
+        </createTable>
+
+        <createTable tableName="company" remarks="公司">
+            <column name="id" type="varchar(32)" remarks="公司主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_company_id"/>
+            </column>
+            <column name="company_code" type="varchar(32)" remarks="公司代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_name" type="varchar(64)" remarks="公司名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
+        </createTable>
+
+        <createTable tableName="bank_account" remarks="银行账户">
+            <column name="id" type="varchar(32)" remarks="银行账户主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bank_account_id"/>
+            </column>
+            <column name="bank_id" type="varchar(32)" remarks="银行总行ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_branch_id" type="varchar(32)" remarks="银行分行ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_account" type="varchar(32)" remarks="银行账号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_account_name" type="varchar(128)" remarks="账户名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
+        </createTable>
+
+        <createTable tableName="partner_bankaccount_rel">
+            <column name="id" type="varchar(32)" remarks="合作伙伴-银行账户关系主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_partner_bankaccount_rel_id"/>
+            </column>
+            <column name="partner_id" type="varchar(32)" remarks="合作伙伴ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_account_id" type="varchar(32)" remarks="银行账号ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="partner_type" type="char(1)" remarks="合作伙伴类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
+        </createTable>
+
         <createTable tableName="vendor" remarks="供应商">
             <column name="id" type="varchar(32)" remarks="供应商主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_id"/>
             </column>
-            <column name="number" type="varchar(20)" remarks="供应商编码">
+            <column name="vendor_code" type="varchar(32)" remarks="供应商编码">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)" remarks="供应商名称">
-            </column>
-            <column name="vendor_group" type="varchar(10)" remarks="供应商分组">
-            </column>
-            <column name="contact_person" type="varchar(20)" remarks="联络人">
-            </column>
-            <column name="contact_person_id" type="varchar(30)" remarks="联络人身份证号码">
-            </column>
-            <column name="contact_phone" type="varchar(30)" remarks="联络电话">
-            </column>
-            <column name="social_credit_code" type="varchar(30)" remarks="社会信用代码">
-            </column>
-            <column name="tax_subject" type="varchar(20)" remarks="纳税人资格">
-            </column>
-            <column name="business_license" type="varchar(30)" remarks="营业执照号码">
-            </column>
-            <column name="tax_code" type="varchar(30)" remarks="税务登记号">
-            </column>
-            <column name="create_by" type="varchar(32)" remarks="创建人'">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间'">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
-        </createTable>
-       <createTable tableName="customer" remarks="客户">
-            <column name="id" type="varchar(32)" remarks="客户主键">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer_id"/>
-            </column>
-            <column name="number" type="varchar(20)" remarks="客户编码">
+            <column name="vendor_name" type="varchar(64)" remarks="供应商名称">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)" remarks="客户名称">
-            </column>
-            <column name="customer_group" type="varchar(10)" remarks="客户分组">
-            </column>
-            <column name="contact_person" type="varchar(20)" remarks="联络人">
-            </column>
-            <column name="contact_phone" type="varchar(30)" remarks="联络电话">
-            </column>
-            <column name="contact_person_id" type="varchar(30)" remarks="联络人身份证号码">
-            </column>
-            <column name="social_credit_code" type="varchar(30)" remarks="社会信用代码">
-            </column>
-            <column name="tax_subject" type="varchar(20)" remarks="纳税人资格">
-            </column>
-            <column name="business_license" type="varchar(30)" remarks="营业执照号码">
-            </column>
-            <column name="tax_code" type="varchar(30)" remarks="税务登记号">
-            </column>
-            <column name="create_by" type="varchar(32)" remarks="创建人">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="vendor_group_code" type="int" remarks="供应商分组"/>
+            <column name="contact_person" type="varchar(32)" remarks="联络人"/>
+            <column name="contact_person_id" type="varchar(32)" remarks="联络人身份证号码"/>
+            <column name="contact_phone" type="varchar(32)" remarks="联络电话"/>
+            <column name="social_credit_code" type="varchar(32)" remarks="社会信用代码"/>
+            <column name="tax_subject" type="varchar(32)" remarks="纳税人资格"/>
+            <column name="business_license" type="varchar(32)" remarks="营业执照号码"/>
+            <column name="tax_code" type="varchar(32)" remarks="税务登记号"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
 
         <createTable tableName="project" remarks="项目">
             <column name="id" type="varchar(32)" remarks="项目主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_project_id"/>
             </column>
-            <column name="company_id" type="varchar(32)" remarks="公司主键">
+            <column name="company_id" type="varchar(32)" remarks="公司ID">
+                <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(50)" remarks="项目名称">
+            <column name="project_name" type="varchar(64)" remarks="项目名称">
+                <constraints nullable="false"/>
             </column>
-            <column name="comments" type="varchar(100)" remarks="备注">
+            <column name="comments" type="varchar(255)" remarks="备注"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
+        </createTable>
+
+        <createTable tableName="customer" remarks="客户">
+            <column name="id" type="varchar(32)" remarks="客户主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer_id"/>
             </column>
-            <column name="create_by" type="varchar(32)" remarks="创建人">
+            <column name="customer_code" type="varchar(32)" remarks="客户编码">
+                <constraints nullable="false"/>
             </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            <column name="customer_name" type="varchar(128)" remarks="客户名称">
+                <constraints nullable="false"/>
             </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
+            <column name="customer_group_code" type="int" remarks="客户分组编码">
+                <constraints nullable="false"/>
             </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+           <column name="contact_person" type="varchar(32)" remarks="联络人"/>
+           <column name="contact_phone" type="varchar(32)" remarks="联络电话"/>
+           <column name="contact_person_id" type="varchar(32)" remarks="联络人身份证号码"/>
+           <column name="social_credit_code" type="varchar(32)" remarks="社会信用代码"/>
+           <column name="tax_subject" type="varchar(32)" remarks="纳税人资格"/>
+           <column name="business_license" type="varchar(32)" remarks="营业执照号码"/>
+           <column name="tax_code" type="varchar(32)" remarks="税务登记号"/>
+           <column name="create_by" type="varchar(32)" remarks="创建人"/>
+           <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+           <column name="update_by" type="varchar(32)" remarks="修改人"/>
+           <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+           <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
     </changeSet>
 
     <include file="/db/changelog/db.changelog-purchase.xml"/>
     <include file="/db/changelog/db.changelog-sales.xml"/>
-
-
 
 </databaseChangeLog>
