@@ -117,7 +117,7 @@
             </column>
             <column name="company_id" type="varchar(32)" remarks="公司主键">
             </column>
-            <column name="title" type="varchar(50)" remarks="项目名称">
+            <column name="name" type="varchar(50)" remarks="项目名称">
             </column>
             <column name="comments" type="varchar(100)" remarks="备注">
             </column>

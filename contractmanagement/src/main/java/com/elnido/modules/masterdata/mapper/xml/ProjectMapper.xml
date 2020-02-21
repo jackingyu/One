@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.masterdata.mapper.ProjectMapper">
+
+    <resultMap id="projectMap" type="com.elnido.modules.masterdata.entity.Project">
+        <result column="id" property="id"/>
+        <result column="company_id" property="companyId"/>
+        <result column="name" property="name"/>
+        <result column="comments" property="comments"/>
+        <result column="contact_phone" property="contactPhone"/>
+        <association property="company" column="company_id"
+                     select="com.elnido.modules.masterdata.mapper.CompanyMapper.selectById"/>
+    </resultMap>
+
+    <select id="findAssociatedProject" resultMap="projectMap">
+        select *
+        from project
+        where id=#{projectId}
+    </select>
+</mapper>

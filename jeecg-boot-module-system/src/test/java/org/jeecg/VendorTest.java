@@ -61,7 +61,7 @@ public class VendorTest {
 	}
 
 	@Test
-	public void d_test_find_paged_vendor_by_vendor_group_id() {
+	public void d_test_find_paged_vendor_by_vendor_name() {
 		VendorPage<Vendor> vendorPage = new VendorPage<>(1, 10);
 		vendorPage.setVendorName("005");
 		VendorPage<Vendor> pagedVendor = vendorService.findPagedVendor(vendorPage);

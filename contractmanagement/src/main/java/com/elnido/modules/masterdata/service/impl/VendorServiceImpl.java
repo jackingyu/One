@@ -1,17 +1,13 @@
 package com.elnido.modules.masterdata.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.elnido.modules.masterdata.entity.Company;
 import com.elnido.modules.masterdata.entity.Partner2BankAccount;
 import com.elnido.modules.masterdata.entity.Vendor;
-import com.elnido.modules.masterdata.entity.VendorGroup;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
-import com.elnido.modules.masterdata.mapper.VendorGroupMapper;
 import com.elnido.modules.masterdata.mapper.VendorMapper;
 import com.elnido.modules.masterdata.model.VendorPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.Partner2BankAccountService;
-import com.elnido.modules.masterdata.service.VendorGroupService;
 import com.elnido.modules.masterdata.service.VendorService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -33,7 +33,7 @@ import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TE
 @ActiveProfiles("unittest")
 @Slf4j
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CompanyTest {
+public class CompanyTest extends BaseTest{
 
 	public static final String IMPORTED_COMPANY_ID = "eaa2aab69d74443ebc025ee4fd76b882";
 
@@ -47,22 +47,6 @@ public class CompanyTest {
 
 	@Resource
 	private Partner2BankAccountService partner2BankAccountService;
-
-	private Company createMockCompany(String companyCode, String companyName) {
-		Company company = new Company();
-		company.setCompanyCode(companyCode);
-		company.setCompanyName(companyName);
-		return company;
-	}
-
-	private BankAccount createMockBankAccount(String bankId, String subBranchId, String bankAccount, String bankAccountName) {
-		BankAccount result = new BankAccount();
-		result.setBankId(bankId);
-		result.setSubBranchId(subBranchId);
-		result.setBankAccount(bankAccount);
-		result.setBankAccountName(bankAccountName);
-		return result;
-	}
 
 	@Test
 	public void a_test_create_company() {

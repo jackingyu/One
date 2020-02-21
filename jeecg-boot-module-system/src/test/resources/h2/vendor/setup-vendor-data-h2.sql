@@ -1,13 +1,3 @@
--- 供应商分组
-INSERT INTO `vendor_group` (id, vendor_group_name, vendor_group_code, create_by, create_time)
-VALUES ('a0b70f81423141cd8bb2d57b2e6bbab1','钢铁材料商', 1, 'vendoradmin', now());
-
-INSERT INTO `vendor_group` (id, vendor_group_name, vendor_group_code, create_by, create_time)
-VALUES ('3fef33a8c7094fdca53a78b96228aa4c','水泥材料商', 2, 'vendoradmin', now());
-
-INSERT INTO `vendor_group` (id, vendor_group_name, vendor_group_code, create_by, create_time)
-VALUES ('662e256ad84742dfb708573e8a3ea92e','黄沙材料商', 3, 'vendoradmin', now());
-
 -- 供应商
 INSERT INTO `vendor` (id, code, name, contact_person, vendor_group_id, contact_person_id, contact_phone, social_credit_code, tax_subject, business_license, tax_code, create_by, create_time)
 VALUES ('03290ba50c8d4cbc9b5f28ac4af51e1d','vendor001', 'vendor001name', 'vendor001cp', 'a0b70f81423141cd8bb2d57b2e6bbab1', 'vendor001cpid', 'vendor001phone', 'vendor001scc', 'vendor001ts', 'vendor001bl', 'vendor001tc', 'vendoradmin', now());
