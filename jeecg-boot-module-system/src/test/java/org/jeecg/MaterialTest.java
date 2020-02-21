@@ -42,7 +42,7 @@ public class MaterialTest {
 		material.setMaterialCode(materialCode);
 		material.setMaterialGroupCode(materialGroupCode);
 		material.setMaterialDescription(materialDescription);
-//		material.setOneTimeFlag(oneTimeFlag);
+		material.setOneTimeFlag(oneTimeFlag);
 		return material;
 	}
 
@@ -94,7 +94,7 @@ public class MaterialTest {
 		material.setMaterialName("Mock-Material-002-Update");
 		material.setMaterialDescription("Mock-Material-002-Description-Update");
 		material.setMaterialGroupCode(2);
-//		material.setOneTimeFlag(MaterialTypeEnum.MULTIPLE_TIME);
+		material.setOneTimeFlag(MaterialTypeEnum.MULTIPLE_TIME);
 
 		boolean updated = materialService.updateMaterial(material);
 		Assert.assertThat(updated, is(true));

@@ -190,7 +190,7 @@
         </createTable>
         <createTable tableName="vendor_payment" remarks="供应商付款">
             <column name="id" type="varchar(32)" remarks="供应商发票主键">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_invoice_id"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_payment_id"/>
             </column>
             <column name="vendor_id" type="varchar(32)" remarks="供应商主键">
             </column>

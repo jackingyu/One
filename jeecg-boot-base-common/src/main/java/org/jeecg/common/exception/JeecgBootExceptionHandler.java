@@ -7,13 +7,22 @@ import org.jeecg.common.api.vo.Result;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.redis.connection.PoolException;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 异常处理器
@@ -102,5 +111,16 @@ public class JeecgBootExceptionHandler {
     	log.error(e.getMessage(), e);
         return Result.error("Redis 连接异常!");
     }
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Result<?> handleValidationExceptions(
+			MethodArgumentNotValidException ex) {
+
+		String errorString = ex.getBindingResult().getAllErrors().stream()
+				.map(error -> error.getDefaultMessage())
+				.collect(Collectors.joining("| "));
+		return Result.error(errorString);
+	}
 
 }
