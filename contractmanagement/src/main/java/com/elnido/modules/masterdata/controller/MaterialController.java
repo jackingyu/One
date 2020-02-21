@@ -1,5 +1,7 @@
 package com.elnido.modules.masterdata.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.elnido.modules.masterdata.entity.Material;
 import com.elnido.modules.masterdata.model.MaterialPage;
 import com.elnido.modules.masterdata.service.MaterialService;
@@ -8,11 +10,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
+import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.MessageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author baogang
@@ -26,20 +30,20 @@ public class MaterialController {
     @Resource
     private MaterialService materialService;
 
-    @Autowired
+    @Resource
     private MessageUtils messageUtils;
 
     @GetMapping()
     @ApiOperation(value = "物料表-按条件查询物料", notes = "物料表-按条件查询物料")
-    public Result<MaterialPage<Material>> pagedSearchMaterials(MaterialSearchVO materialSearchVO,
-                                                                 @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                                                                 @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
-        Result<MaterialPage<Material>> result = new Result<>();
+    public Result<IPage<Material>> searchPagedMaterials(Material material,
+                                                        @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                                        @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                                        HttpServletRequest httpServletRequest) {
+        Result<IPage<Material>> result = new Result<>();
+        QueryWrapper<Material> queryWrapper = QueryGenerator.initQueryWrapper(material, httpServletRequest.getParameterMap());
         MaterialPage<Material> materialPage = new MaterialPage(pageNo, pageSize);
-        materialPage.setMaterialGroupCode(materialSearchVO.getMaterialGroupCode());
-        materialPage.setMaterialName(materialSearchVO.getMaterialName());
 
-        MaterialPage<Material> searchedMaterialPage = materialService.findPagedMaterials(materialPage);
+        IPage<Material> searchedMaterialPage = materialService.page(materialPage, queryWrapper);
         result.setResult(searchedMaterialPage);
         result.setSuccess(true);
         return result;
