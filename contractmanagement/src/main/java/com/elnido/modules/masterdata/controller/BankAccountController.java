@@ -31,7 +31,7 @@ public class BankAccountController {
     @Resource
     private MessageUtils messageUtils;
 
-    @PutMapping("/")
+    @PutMapping()
     @ApiOperation(value = "银行账户表-更新银行账户", notes = "银行账户-更新银行账户")
     public Result<?> updateBankAccount(@RequestBody BankAccount bankAccount) {
         Result<Boolean> result = new Result<>();
