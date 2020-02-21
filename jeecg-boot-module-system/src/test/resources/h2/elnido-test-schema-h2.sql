@@ -29,21 +29,21 @@ CREATE TABLE `sys_dict_item`  (
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `material`;
-CREATE TABLE `material`  (
-  `id` varchar(32) NOT NULL ,
-  `material_name` varchar(255) DEFAULT NULL ,
-  `material_description` varchar(255)  DEFAULT NULL ,
-  `material_code` varchar(255) DEFAULT NULL ,
-  `material_group_code` int(11) DEFAULT NULL,
-  `one_time_flag` int(1) DEFAULT 0 ,
-  `create_by` varchar(32) DEFAULT NULL ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) DEFAULT NULL,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0
-);
-
+-- DROP TABLE IF EXISTS `material`;
+-- CREATE TABLE `material`  (
+--   `id` varchar(32) NOT NULL ,
+--   `material_name` varchar(255) DEFAULT NULL ,
+--   `material_description` varchar(255)  DEFAULT NULL ,
+--   `material_code` varchar(255) DEFAULT NULL ,
+--   `material_group_code` int(11) DEFAULT NULL,
+--   `one_time_flag` int(1) DEFAULT 0 ,
+--   `create_by` varchar(32) DEFAULT NULL ,
+--   `create_time` TIMESTAMP ,
+--   `update_by` varchar(32) DEFAULT NULL,
+--   `update_time` TIMESTAMP ,
+--   `del_flag` tinyint(1) DEFAULT 0
+-- );
+--
 DROP TABLE IF EXISTS `banks`;
 CREATE TABLE `banks` (
   `sub_branch_name` varchar(255) NOT NULL ,
@@ -55,102 +55,102 @@ CREATE TABLE `banks` (
   `bank_name` varchar(255) NOT NULL ,
   `bank_id` int(11) DEFAULT NULL
 );
-
-DROP TABLE IF EXISTS `company`;
-CREATE TABLE `company`  (
-  `id` varchar(32) ,
-  `company_code` varchar(32) NOT NULL ,
-  `company_name` varchar(255) NOT NULL ,
-  `create_by` varchar(32) DEFAULT NULL ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) DEFAULT NULL ,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0 ,
-  PRIMARY KEY (`id`)
-);
-
-DROP TABLE IF EXISTS `bank_account`;
-CREATE TABLE `bank_account`  (
-  `id` varchar(32) NOT NULL ,
-  `bank_id` varchar(32) NOT NULL ,
-  `sub_branch_id` varchar(32) NOT NULL ,
-  `bank_account` varchar(32) NOT NULL ,
-  `bank_account_name` varchar(255) NOT NULL ,
-  `create_by` varchar(32) ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) ,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0 ,
-  PRIMARY KEY (`id`)
-);
-
-DROP TABLE IF EXISTS `partner_bankaccount_rel`;
-CREATE TABLE `partner_bankaccount_rel`  (
-  `id` varchar(32) NOT NULL ,
-  `partner_id` varchar(32) NOT NULL ,
-  `bank_account_id` varchar(32) NOT NULL ,
-  `partner_type` char(1) DEFAULT 1 ,
-  `create_by` varchar(32) ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) ,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0 ,
-  PRIMARY KEY (`id`)
-);
-
-DROP TABLE IF EXISTS `vendor`;
-CREATE TABLE `vendor`  (
-  `id` varchar(32) NOT NULL ,
-  `code` varchar(32) ,
-  `name` varchar(32) ,
-  `vendor_group_id` varchar(32) ,
-  `contact_person` varchar(20) ,
-  `contact_person_id` varchar(30) ,
-  `contact_phone` varchar(30) ,
-  `social_credit_code` varchar(30) ,
-  `tax_subject` varchar(20) ,
-  `business_license` varchar(30) ,
-  `tax_code` varchar(30) ,
-  `create_by` varchar(32) ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) ,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0 ,
-  PRIMARY KEY (`id`)
-);
-
-DROP TABLE IF EXISTS `project`;
-CREATE TABLE `project`  (
-   `id` varchar(32) NOT NULL ,
-   `company_id` varchar(32) ,
-   `name` varchar(32) ,
-   `comments` varchar(255) ,
-   `create_by` varchar(32) ,
-   `create_time` TIMESTAMP ,
-   `update_by` varchar(32) ,
-   `update_time` TIMESTAMP ,
-   `del_flag` tinyint(1) DEFAULT 0 ,
-   PRIMARY KEY (`id`)
-);
-
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer`  (
-  `id` varchar(32) NOT NULL ,
-  `customer_code` varchar(20) NOT NULL ,
-  `name` varchar(20) ,
-  `customer_group` varchar(10) ,
-  `contact_person` varchar(20) ,
-  `contact_phone` varchar(30) ,
-  `contact_person_id` varchar(30) ,
-  `social_credit_code` varchar(30) ,
-  `tax_subject` varchar(20) ,
-  `business_license` varchar(30) ,
-  `tax_code` varchar(30) ,
-  `comments` varchar(255) ,
-  `create_by` varchar(32) ,
-  `create_time` TIMESTAMP ,
-  `update_by` varchar(32) ,
-  `update_time` TIMESTAMP ,
-  `del_flag` tinyint(1) DEFAULT 0 ,
-  PRIMARY KEY (`id`)
-);
+--
+-- DROP TABLE IF EXISTS `company`;
+-- CREATE TABLE `company`  (
+--   `id` varchar(32) ,
+--   `company_code` varchar(32) NOT NULL ,
+--   `company_name` varchar(255) NOT NULL ,
+--   `create_by` varchar(32) DEFAULT NULL ,
+--   `create_time` TIMESTAMP ,
+--   `update_by` varchar(32) DEFAULT NULL ,
+--   `update_time` TIMESTAMP ,
+--   `del_flag` tinyint(1) DEFAULT 0 ,
+--   PRIMARY KEY (`id`)
+-- );
+--
+-- DROP TABLE IF EXISTS `bank_account`;
+-- CREATE TABLE `bank_account`  (
+--   `id` varchar(32) NOT NULL ,
+--   `bank_id` varchar(32) NOT NULL ,
+--   `sub_branch_id` varchar(32) NOT NULL ,
+--   `bank_account` varchar(32) NOT NULL ,
+--   `bank_account_name` varchar(255) NOT NULL ,
+--   `create_by` varchar(32) ,
+--   `create_time` TIMESTAMP ,
+--   `update_by` varchar(32) ,
+--   `update_time` TIMESTAMP ,
+--   `del_flag` tinyint(1) DEFAULT 0 ,
+--   PRIMARY KEY (`id`)
+-- );
+--
+-- DROP TABLE IF EXISTS `partner_bankaccount_rel`;
+-- CREATE TABLE `partner_bankaccount_rel`  (
+--   `id` varchar(32) NOT NULL ,
+--   `partner_id` varchar(32) NOT NULL ,
+--   `bank_account_id` varchar(32) NOT NULL ,
+--   `partner_type` char(1) DEFAULT 1 ,
+--   `create_by` varchar(32) ,
+--   `create_time` TIMESTAMP ,
+--   `update_by` varchar(32) ,
+--   `update_time` TIMESTAMP ,
+--   `del_flag` tinyint(1) DEFAULT 0 ,
+--   PRIMARY KEY (`id`)
+-- );
+--
+-- DROP TABLE IF EXISTS `vendor`;
+-- CREATE TABLE `vendor`  (
+--   `id` varchar(32) NOT NULL ,
+--   `code` varchar(32) ,
+--   `name` varchar(32) ,
+--   `vendor_group_id` varchar(32) ,
+--   `contact_person` varchar(20) ,
+--   `contact_person_id` varchar(30) ,
+--   `contact_phone` varchar(30) ,
+--   `social_credit_code` varchar(30) ,
+--   `tax_subject` varchar(20) ,
+--   `business_license` varchar(30) ,
+--   `tax_code` varchar(30) ,
+--   `create_by` varchar(32) ,
+--   `create_time` TIMESTAMP ,
+--   `update_by` varchar(32) ,
+--   `update_time` TIMESTAMP ,
+--   `del_flag` tinyint(1) DEFAULT 0 ,
+--   PRIMARY KEY (`id`)
+-- );
+--
+-- DROP TABLE IF EXISTS `project`;
+-- CREATE TABLE `project`  (
+--    `id` varchar(32) NOT NULL ,
+--    `company_id` varchar(32) ,
+--    `name` varchar(32) ,
+--    `comments` varchar(255) ,
+--    `create_by` varchar(32) ,
+--    `create_time` TIMESTAMP ,
+--    `update_by` varchar(32) ,
+--    `update_time` TIMESTAMP ,
+--    `del_flag` tinyint(1) DEFAULT 0 ,
+--    PRIMARY KEY (`id`)
+-- );
+--
+-- DROP TABLE IF EXISTS `customer`;
+-- CREATE TABLE `customer`  (
+--   `id` varchar(32) NOT NULL ,
+--   `customer_code` varchar(20) NOT NULL ,
+--   `name` varchar(20) ,
+--   `customer_group` varchar(10) ,
+--   `contact_person` varchar(20) ,
+--   `contact_phone` varchar(30) ,
+--   `contact_person_id` varchar(30) ,
+--   `social_credit_code` varchar(30) ,
+--   `tax_subject` varchar(20) ,
+--   `business_license` varchar(30) ,
+--   `tax_code` varchar(30) ,
+--   `comments` varchar(255) ,
+--   `create_by` varchar(32) ,
+--   `create_time` TIMESTAMP ,
+--   `update_by` varchar(32) ,
+--   `update_time` TIMESTAMP ,
+--   `del_flag` tinyint(1) DEFAULT 0 ,
+--   PRIMARY KEY (`id`)
+-- );
