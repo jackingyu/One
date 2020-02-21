@@ -10,13 +10,6 @@ import com.elnido.modules.masterdata.model.MaterialPage;
 public interface MaterialService extends IService<Material> {
 
     /**
-     * 根据物料组和物料名称查询物料
-     * @param materialPage
-     * @return 分页的物料数组
-     */
-    MaterialPage<Material> findPagedMaterials(MaterialPage<Material> materialPage);
-
-    /**
      * 新增物料
      * @param material
      * @return

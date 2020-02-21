@@ -16,14 +16,6 @@ import javax.annotation.Resource;
 @Service
 public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> implements MaterialService {
 
-    @Resource
-    private MaterialMapper materialMapper;
-
-    @Override
-    public MaterialPage<Material> findPagedMaterials(MaterialPage<Material> materialPage) {
-        return materialMapper.findPagedMaterials(materialPage);
-    }
-
     @Override
     public boolean createMaterial(Material material) {
         checkMaterial(material);
