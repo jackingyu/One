@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 @Slf4j
 @Api(tags = "物料维护")
 @RestController
-@RequestMapping("/masterdata/materials/")
+@RequestMapping("/masterdata/materials")
 public class MaterialController {
 
     @Resource

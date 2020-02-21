@@ -32,7 +32,7 @@ import static com.elnido.modules.masterdata.Constants.I18N.General.*;
 @Slf4j
 @Api(tags = "银行账户(公司、供应商、客户)维护")
 @RestController
-@RequestMapping("/masterdata/bankaccounts/")
+@RequestMapping("/masterdata/bankaccounts")
 public class BankAccountController {
 
     @Resource

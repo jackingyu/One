@@ -26,7 +26,7 @@ import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EX
 @Slf4j
 @Api(tags = "公司维护")
 @RestController
-@RequestMapping("/company/")
+@RequestMapping("/company")
 public class CompanyController {
 
     @Resource
@@ -53,7 +53,7 @@ public class CompanyController {
         return result;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "公司表-按ID查询公司全部信息", notes = "公司表-按ID查询公司全部信息")
     public Result<?> queryCompanyInfoById(@PathVariable String id) {
         Result<Company> result = new Result<>();
