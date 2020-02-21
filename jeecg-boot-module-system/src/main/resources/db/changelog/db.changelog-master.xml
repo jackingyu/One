@@ -7,6 +7,7 @@
     <changeSet id="drop_tb" author="jack">
         <sql>
             DROP TABLE IF EXISTS `material`;
+            DROP TABLE IF EXISTS `company`;
             DROP TABLE IF EXISTS `vendor`;
             DROP TABLE IF EXISTS `customer`;
             DROP TABLE IF EXISTS `project`;
@@ -30,22 +31,53 @@
             <column name="id" type="varchar(32)" remarks="物料主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_material_id"/>
             </column>
-            <column name="material_name" type="varchar(32)" remarks="物料名称"/>
+            <column name="material_code" type="varchar(32)" remarks="物料代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_name" type="varchar(32)" remarks="物料名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_group_code" type="int" remarks="物料组代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="one_time_flag" type="int" defaultValue="0" remarks="一次性物料标记, 0-一次性物料 1-非一次性物料">
+                <constraints nullable="false"/>
+            </column>
             <column name="material_description" type="varchar(255)" remarks="物料描述"/>
-            <column name="material_code" type="varchar(20)" remarks="物料代码"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除"/>
+        </createTable>
+
+        <createTable tableName="company" remarks="公司">
+            <column name="id" type="varchar(32)" remarks="公司主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_company_id"/>
+            </column>
+            <column name="material_description" type="varchar(255)" remarks="物料描述"/>
+            <column name="company_code" type="varchar(32)" remarks="物料代码"/>
             <column name="material_group_code" type="int" remarks="物料组代码"/>
             <column name="one_time_flag" type="int" remarks="一次性物料标记, 0-一次性物料 1-非一次性物料"/>
-            <column name="create_by" type="varchar(32)" remarks="创建人">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间'">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
+
+<!--        DROP TABLE IF EXISTS `company`;-->
+<!--        CREATE TABLE `company`  (-->
+<!--        `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键ID',-->
+<!--        `company_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公司代码',-->
+<!--        `company_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公司名称',-->
+<!--        `create_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',-->
+<!--        `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',-->
+<!--        `update_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改人',-->
+<!--        `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',-->
+<!--        `del_flag` tinyint(1) DEFAULT 0 COMMENT '删除标识0-正常,1-已删除',-->
+<!--        PRIMARY KEY (`id`) USING BTREE-->
+<!--        ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;-->
 
 <!--        <createTable tableName="vendor" remarks="供应商">-->
 <!--            <column name="id" type="varchar(32)" remarks="供应商主键">-->
