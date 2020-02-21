@@ -1,10 +1,12 @@
 package com.elnido.modules.masterdata.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elnido.modules.masterdata.entity.BankAccount;
+import com.elnido.modules.masterdata.entity.Project;
 import com.elnido.modules.masterdata.entity.Vendor;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.service.BankAccountService;
@@ -14,11 +16,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.api.vo.Result;
+import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.MessageUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import static com.elnido.modules.masterdata.Constants.I18N.General.RECORD_NOT_EXIST_KEY;
 
@@ -42,16 +46,14 @@ public class VendorController {
 
     @GetMapping()
     @ApiOperation(value = "供应商表-按条件查询供应商信息", notes = "供应商表-按条件查询供应商")
-    public Result<IPage<Vendor>> pagedSearchVendors(@RequestParam(name = "vendorGroupCode", required = false) String vendorGroupCode,
-                                                         @RequestParam(name = "vendorName", required = false) String vendorName,
-                                                         @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                                                         @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+    public Result<IPage<Vendor>> pagedSearchVendors(Vendor vendor,
+                                                    @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                                    @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                                    HttpServletRequest httpServletRequest) {
         Result<IPage<Vendor>> result = new Result<>();
         IPage<Vendor> iPage = new Page(pageNo, pageSize);
-        LambdaQueryWrapper<Vendor> lambdaQueryWrapper =
-                Wrappers.<Vendor>lambdaQuery().like(StringUtils.isNotBlank(vendorName), Vendor::getVendorName, vendorName)
-                .eq(StringUtils.isNotBlank(vendorGroupCode), Vendor::getVendorGroupCode, vendorGroupCode);
-        IPage<Vendor> pagedVendor = vendorService.page(iPage, lambdaQueryWrapper);
+        QueryWrapper<Vendor> queryWrapper = QueryGenerator.initQueryWrapper(vendor, httpServletRequest.getParameterMap());
+        IPage<Vendor> pagedVendor = vendorService.page(iPage, queryWrapper);
         result.setResult(pagedVendor);
         result.setSuccess(true);
         return result;
