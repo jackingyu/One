@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
@@ -27,7 +28,7 @@ public class BankTest {
 
 	@Test
 	public void test_find_all_banks() {
-		List<Bank> bankList = bankService.findAllBanks();
+		List<Map<String, Object>> bankList = bankService.findAllBanks();
 		Assert.assertThat(bankList, notNullValue());
 		Assert.assertThat(bankList.size() > 0, is(Boolean.TRUE));
 
@@ -38,8 +39,8 @@ public class BankTest {
 	}
 
 	@Test
-	public void test_find_subbranches_by_bank_id() {
-		List<Bank> subbranches = bankService.findSubbranchesByBankId("1001");
+	public void test_find_subbranches_by_bank_id_and_input() {
+		List<Map<String, Object>> subbranches = bankService.findSubbranchesByBankIdAndName("1001", "北京");
 		Assert.assertThat(subbranches, notNullValue());
 		Assert.assertThat(subbranches.size() > 0, is(Boolean.TRUE));
 
