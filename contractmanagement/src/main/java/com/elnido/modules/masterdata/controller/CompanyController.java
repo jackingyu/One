@@ -7,12 +7,11 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Company;
-import com.elnido.modules.masterdata.entity.Material;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
 import com.elnido.modules.masterdata.model.CompanyPage;
-import com.elnido.modules.masterdata.model.MaterialPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.CompanyService;
+import com.elnido.modules.masterdata.util.ElnidoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -47,15 +46,14 @@ public class CompanyController {
 
     @GetMapping()
     @ApiOperation(value = "公司表-按条件查询公司信息", notes = "公司表-按条件查询公司")
-    public Result<IPage<Company>> pagedSearchCompanies(Company company,
-                                                       @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                                                       @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
-                                                       HttpServletRequest httpServletRequest) {
-        Result<IPage<Company>> result = new Result<>();
-        IPage<Company> companyPage = new Page(pageNo, pageSize);
-        
-        QueryWrapper<Company> queryWrapper = QueryGenerator.initQueryWrapper(company, httpServletRequest.getParameterMap());
-        IPage<Company> queriedCompanyPage = companyService.page(companyPage, queryWrapper);
+    public Result<CompanyPage<Company>> pagedSearchCompanies(@RequestParam(name = "companyName") String companyName,
+                                                             @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                                             @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+        Result<CompanyPage<Company>> result = new Result<>();
+        CompanyPage<Company> companyPage = new CompanyPage(pageNo, pageSize);
+        companyPage.setCompanyName(ElnidoUtil.handleJeecgFuzzySearchString(companyName));
+
+        CompanyPage<Company> queriedCompanyPage = companyService.findPagedCompanies(companyPage);
         result.setResult(queriedCompanyPage);
         result.setSuccess(true);
         return result;
