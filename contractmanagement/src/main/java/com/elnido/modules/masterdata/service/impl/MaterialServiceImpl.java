@@ -1,5 +1,7 @@
 package com.elnido.modules.masterdata.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.elnido.modules.masterdata.entity.Material;
 import com.elnido.modules.masterdata.mapper.MaterialMapper;
@@ -9,12 +11,20 @@ import com.elnido.modules.masterdata.service.ServicesUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author baogang
  */
 @Service
 public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> implements MaterialService {
+
+    @Override
+    public List<Material> findMaterialsByMaterialGroupCode(String materialGroupCode) {
+        LambdaQueryWrapper<Material> lambdaQueryWrapper =
+                Wrappers.<Material>lambdaQuery().eq(Material::getMaterialGroupCode, materialGroupCode);
+        return list(lambdaQueryWrapper);
+    }
 
     @Override
     public boolean createMaterial(Material material) {

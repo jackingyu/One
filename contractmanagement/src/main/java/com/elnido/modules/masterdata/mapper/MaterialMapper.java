@@ -28,4 +28,6 @@ public interface MaterialMapper extends BaseMapper<Material> {
             "</where>" +
             "</script>")
     MaterialPage<Material> findPagedMaterials(MaterialPage<Material> materialPage);
+
+
 }
