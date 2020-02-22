@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="dataload" author="jack">
+        <loadData tableName="sys_role" file="/db/changelog/data/sys_role.csv">
+        </loadData>
+        <loadData tableName="sys_permission" file="/db/changelog/data/sys_permission.csv">
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
