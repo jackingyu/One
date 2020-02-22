@@ -10,7 +10,8 @@ import org.junit.runners.Suite;
   CompanyTest.class,
   VendorTest.class,
   ProjectTest.class,
-  CustomerTest.class
+  CustomerTest.class,
+  ElnidoUtilTest.class
 })
 public class ElnidoAppTests {
 }

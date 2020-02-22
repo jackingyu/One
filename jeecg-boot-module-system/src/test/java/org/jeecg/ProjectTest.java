@@ -1,11 +1,7 @@
 package org.jeecg;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.elnido.modules.masterdata.entity.Company;
 import com.elnido.modules.masterdata.entity.Project;
-import com.elnido.modules.masterdata.model.ProjectPage;
 import com.elnido.modules.masterdata.service.CompanyService;
 import com.elnido.modules.masterdata.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,14 +12,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
-import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

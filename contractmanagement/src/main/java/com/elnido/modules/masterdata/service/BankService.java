@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.elnido.modules.masterdata.entity.Bank;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author baogang
@@ -14,12 +15,13 @@ public interface BankService extends IService<Bank> {
      * 查询所有银行
      * @return
      */
-    List<Bank> findAllBanks();
+    List<Map<String, Object>> findAllBanks();
 
     /**
-     * 根据银行ID查询其下属支行
+     * 根据银行总行ID以及输入查询支行信息
      * @param bankId
+     * @param input
      * @return
      */
-    List<Bank> findSubbranchesByBankId(String bankId);
+    List<Map<String, Object>> findSubbranchesByBankIdAndName(String bankId, String input);
 }

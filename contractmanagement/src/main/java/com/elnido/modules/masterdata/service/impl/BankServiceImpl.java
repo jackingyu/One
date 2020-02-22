@@ -9,6 +9,7 @@ import com.elnido.modules.masterdata.service.BankService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author baogang
@@ -17,17 +18,21 @@ import java.util.List;
 public class BankServiceImpl extends ServiceImpl<BankMapper, Bank> implements BankService {
 
     @Override
-    public List<Bank> findAllBanks() {
+    public List<Map<String, Object>> findAllBanks() {
         Wrapper<Bank> bankWrapper = Wrappers.<Bank>lambdaQuery().select(Bank::getBankId, Bank::getBankName).groupBy(Bank::getBankId).groupBy(Bank::getBankName);
-        List<Bank> bankList = this.getBaseMapper().selectList(bankWrapper);
+        List<Map<String, Object>> bankList = this.getBaseMapper().selectMaps(bankWrapper);
         return bankList;
     }
 
     @Override
-    public List<Bank> findSubbranchesByBankId(String bankId) {
-        Wrapper<Bank> bankWrapper = Wrappers.<Bank>lambdaQuery().select(Bank::getSubBranchId, Bank::getSubBranchName)
-                .eq(Bank::getBankId, bankId).orderBy(true, true, Bank::getSubBranchName);
-        List<Bank> subBranchList = this.getBaseMapper().selectList(bankWrapper);
+    public List<Map<String, Object>> findSubbranchesByBankIdAndName(String bankId, String input) {
+        Wrapper<Bank> bankWrapper =
+                Wrappers.<Bank>lambdaQuery().select(Bank::getBankId, Bank::getSubBranchId, Bank::getSubBranchName)
+                .eq(Bank::getBankId, bankId)
+                .like(Bank::getSubBranchName, input)
+                .orderBy(true, true, Bank::getSubBranchName)
+                .last("limit 0, 20");
+        List<Map<String, Object>> subBranchList = this.getBaseMapper().selectMaps(bankWrapper);
         return subBranchList;
     }
 }

@@ -2,8 +2,8 @@ package com.elnido.modules.masterdata.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.elnido.modules.masterdata.entity.Material;
-import com.elnido.modules.masterdata.model.MaterialPage;
 import com.elnido.modules.masterdata.service.MaterialService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,7 +39,7 @@ public class MaterialController {
                                                         HttpServletRequest httpServletRequest) {
         Result<IPage<Material>> result = new Result<>();
         QueryWrapper<Material> queryWrapper = QueryGenerator.initQueryWrapper(material, httpServletRequest.getParameterMap());
-        MaterialPage<Material> materialPage = new MaterialPage(pageNo, pageSize);
+        IPage<Material> materialPage = new Page<>(pageNo, pageSize);
 
         IPage<Material> searchedMaterialPage = materialService.page(materialPage, queryWrapper);
         result.setResult(searchedMaterialPage);
