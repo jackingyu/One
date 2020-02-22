@@ -4,7 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 public enum DySmsEnum {
 	
-	LOGIN_TEMPLATE_CODE("SMS_175435174","JEECG","code"),
+	LOGIN_TEMPLATE_CODE("SMS_184110641","大隆鑫合同管理中台","code"),
 	FORGET_PASSWORD_TEMPLATE_CODE("SMS_175435174","JEECG","code"),
 	REGISTER_TEMPLATE_CODE("SMS_175430166","JEECG","code");
 	
