@@ -14,6 +14,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
+import redis.clients.jedis.Client;
 
 /**
  * Created on 17/6/7.
@@ -57,7 +58,7 @@ public class DySmsHelper {
     }
     
     
-    public static boolean sendSms(String phone,JSONObject templateParamJson,DySmsEnum dySmsEnum) {
+    public static boolean sendSms(String phone,JSONObject templateParamJson,DySmsEnum dySmsEnum) throws ClientException {
     	//可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
@@ -78,13 +79,8 @@ public class DySmsHelper {
 		request.putQueryParameter("SignName",dySmsEnum.getSignName() );
 		request.putQueryParameter("TemplateParam", templateParamJson.toJSONString());
         log.info(phone+":"+templateParamJson.toJSONString());
-        try {
-            CommonResponse response = client.getCommonResponse(request);
-        } catch (ClientException e) {
-            e.printStackTrace();
-            return false;
-        }
 
+        CommonResponse response = client.getCommonResponse(request);
         return true;
 
     }
