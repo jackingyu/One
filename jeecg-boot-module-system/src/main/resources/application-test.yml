@@ -148,8 +148,8 @@ jeecg :
     webapp: D://webapp
   #短信秘钥
   sms:
-     accessKeyId: LTAIpW4gUG7xYDNI
-     accessKeySecret: ??
+     accessKeyId: LTAI4Fr4ysX4vF3hWjuAPYVm
+     accessKeySecret: 3EXLsJQyZ3Sc49oyAZgzxQhjxtVGZv
   shiro:
      excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**
   #阿里云oss存储配置
