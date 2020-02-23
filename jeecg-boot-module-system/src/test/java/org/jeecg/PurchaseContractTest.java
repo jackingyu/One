@@ -43,7 +43,7 @@ public class PurchaseContractTest{
 
 	private PurchaseContract createMockPurchaseContract(String contractCode, String contractTitle, Integer contractTypeCode,
 														String vendorId, String companyId, String projectId,
-														LocalDate beginDate, LocalDate endDate) {
+														Date beginDate, Date endDate) {
 		PurchaseContract purchaseContract = new PurchaseContract();
 		purchaseContract.setContractCode(contractCode);
 		purchaseContract.setContractTitle(contractTitle);
@@ -81,7 +81,7 @@ public class PurchaseContractTest{
 	@Sql(executionPhase = BEFORE_TEST_METHOD, scripts = "classpath:h2/purchasecontract/setup-purchasecontract-data-h2.sql")
 	public void a_test_create_phrase_contract() {
 		PurchaseContract purchaseContract = createMockPurchaseContract("mock-purchase-contract", "mock-purchase-contract_title",
-				1, IMPORT_VENDOR_ID, IMPORT_COMPANY_ID, IMPORT_PROJECT_ID, LocalDate.now(), LocalDate.now());
+				1, IMPORT_VENDOR_ID, IMPORT_COMPANY_ID, IMPORT_PROJECT_ID, new Date(), new Date());
 
 		PurchaseContractItem purchaseContractItem0 = createMockPurchaseContractItem(10, IMPORT_MATERIAL_ID_1, 1,
 				new Double(1), new Double(10.23), new Double(17.76),"acceptanceCriteria_1", "qualityStandard_1",

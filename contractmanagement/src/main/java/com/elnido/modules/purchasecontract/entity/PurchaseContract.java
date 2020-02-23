@@ -61,12 +61,12 @@ public class PurchaseContract implements Serializable {
     private String projectId;
 
     @ApiModelProperty(value = "合同有效期开始时间")
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate beginDate;
+//    @JsonSerialize(using = LocalDateSerializer.class)
+    private Date beginDate;
 
     @ApiModelProperty(value = "合同有效期结束时间")
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate endDate;
+//    @JsonSerialize(using = LocalDateSerializer.class)
+    private Date endDate;
 
     @ApiModelProperty(value = "联络人")
     private String contactPerson;
