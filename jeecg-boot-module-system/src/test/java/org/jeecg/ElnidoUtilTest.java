@@ -1,6 +1,6 @@
 package org.jeecg;
 
-import com.elnido.modules.masterdata.util.ElnidoUtil;
+import com.elnido.modules.util.ElnidoUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

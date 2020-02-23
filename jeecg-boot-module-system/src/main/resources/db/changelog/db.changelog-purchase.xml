@@ -13,16 +13,25 @@
             <column name="contract_code" type="varchar(32)" remarks="合同编号">
                 <constraints nullable="false"/>
             </column>
-            <column name="company_id" type="varchar(32)" remarks="公司主键">
-                <constraints nullable="false"/>
-            </column>
             <column name="contract_title" type="varchar(128)" remarks="合同标题">
                 <constraints nullable="false"/>
             </column>
             <column name="contract_type_code" type="int" remarks="合同类型">
                 <constraints nullable="false"/>
             </column>
+            <column name="company_id" type="varchar(32)" remarks="公司主键">
+                <constraints nullable="false"/>
+            </column>
             <column name="vendor_id" type="varchar(32)" remarks="供应商">
+                <constraints nullable="false"/>
+            </column>
+            <column name="project_id" type="varchar(32)" remarks="项目主键">
+                <constraints nullable="false"/>
+            </column>
+            <column name="begin_date" type="date" remarks="生效日期开始时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="date" remarks="生效日期结束时间">
                 <constraints nullable="false"/>
             </column>
             <column name="contact_person" type="varchar(32)" remarks="联络人"/>
@@ -67,10 +76,10 @@
             <column name="quantity" type="decimal(12,3)" remarks="数量">
                 <constraints nullable="false"/>
             </column>
-            <column name="unit_price" type="decimal(12,3)" remarks="单价">
+            <column name="unit_price" type="decimal(12,2)" remarks="单价">
                 <constraints nullable="false"/>
             </column>
-            <column name="tax_rate" type="decimal(12, 2)" remarks="约定税率"/>
+            <column name="tax_rate" type="decimal(12, 4)" remarks="约定税率"/>
             <column name="acceptance_criteria" type="varchar(64)" remarks="验收标准"/>
             <column name="contract_schedule" type="varchar(64)" remarks="合同工期"/>
             <column name="quality_standard" type="varchar(64)" remarks="质量标准"/>

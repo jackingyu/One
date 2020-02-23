@@ -11,12 +11,6 @@ import java.util.List;
 public interface MaterialService extends IService<Material> {
 
     /**
-     * 根据物料类型查询所有物料
-     * @param materialGroupCode
-     * @return
-     */
-    List<Material> findMaterialsByMaterialGroupCode(String materialGroupCode);
-    /**
      * 新增物料
      * @param material
      * @return

@@ -40,7 +40,7 @@ public class Customer implements Serializable {
     private String id;
 
     @ApiModelProperty(value = "客户编码")
-    @NotEmpty(message = "{elnido.validation.general.shouldnotempty}")
+    @NotEmpty(message = "{elnido.validation.general.idshouldnotempty}")
     private String customerCode;
 
     @ApiModelProperty(value = "客户名称")

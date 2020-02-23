@@ -1,6 +1,7 @@
-package com.elnido.modules.masterdata.entity;
+package com.elnido.modules.purchasecontract.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +14,7 @@ import lombok.experimental.Accessors;
 import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -24,7 +26,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("purchasecontract_item")
+@TableName("purchase_contract_item")
 @ApiModel(value = "采购合同行项目对象", description = "采购合同行项目表")
 public class PurchaseContractItem implements Serializable {
 
@@ -33,7 +35,7 @@ public class PurchaseContractItem implements Serializable {
      */
     @TableId(type = IdType.ID_WORKER_STR)
     @ApiModelProperty(value = "id")
-    @JsonIgnore
+    @NotBlank(message = "{elnido.validation.general.idshouldnotempty}")
     private String id;
 
     @ApiModelProperty(value = "采购合同主键")
@@ -55,16 +57,17 @@ public class PurchaseContractItem implements Serializable {
     private String materialDescription;
 
     @ApiModelProperty(value = "单位代码")
+    @Dict(dicCode = "unit")
     private Integer unitCode;
 
     @ApiModelProperty(value = "数量")
-    private BigDecimal quantity;
+    private Double quantity;
 
     @ApiModelProperty(value = "单价")
-    private BigDecimal unitPrice;
+    private Double unitPrice;
 
     @ApiModelProperty(value = "约定税率")
-    private BigDecimal taxRate;
+    private Double taxRate;
 
     @ApiModelProperty(value = "验收标准")
     private String acceptanceCriteria;
@@ -75,7 +78,7 @@ public class PurchaseContractItem implements Serializable {
     @ApiModelProperty(value = "质量标准")
     private String qualityStandard;
 
-    @ApiModelProperty(value = "付款方式")
+    @ApiModelProperty(value = "付款方式编码")
     @Dict(dicCode = "payment_method")
     private Integer paymentMethodCode;
 
@@ -87,6 +90,17 @@ public class PurchaseContractItem implements Serializable {
 
     @ApiModelProperty(value = "保修条款")
     private String warrantyAgreement;
+
+    @ApiModelProperty(value = "注释")
+    private String comments;
+
+    @ApiModelProperty(value = "单位")
+    @TableField(exist = false)
+    private String unitName;
+
+    @ApiModelProperty(value = "付款方式")
+    @TableField(exist = false)
+    private String paymentMethodName;
 
 
     /**
