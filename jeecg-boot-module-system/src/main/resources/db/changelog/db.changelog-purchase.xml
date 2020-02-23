@@ -4,7 +4,6 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-
     <changeSet id="purchase_data" author="jack">
         <createTable tableName="purchase_contract" remarks="采购合同">
             <column name="id" type="varchar(32)" remarks="采购合同主键">
@@ -161,37 +160,41 @@
             <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
             </column>
         </createTable>
+
         <createTable tableName="vendor_invoice" remarks="供应商发票">
             <column name="id" type="varchar(32)" remarks="供应商发票主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_invoice_id"/>
             </column>
             <column name="vendor_id" type="varchar(32)" remarks="供应商主键">
+                <constraints nullable="false"/>
             </column>
             <column name="company_id" type="varchar(32)" remarks="公司主键">
+                <constraints nullable="false"/>
             </column>
             <column name="contract_content" type="varchar(255)" remarks="合同实施内容">
+                <constraints nullable="false"/>
             </column>
-            <column name="amount" type="decimal(12,3)" remarks="开票金额">
+            <column name="amount" type="decimal(12,2)" remarks="开票金额">
+                <constraints nullable="false"/>
             </column>
             <column name="invoice_date" type="datetime(0)" remarks="开票日期">
+                <constraints nullable="false"/>
             </column>
-            <column name="invoice_number" type="varchar(50)" remarks="发票号码">
+            <column name="invoice_number" type="varchar(54)" remarks="发票号码">
+                <constraints nullable="false"/>
             </column>
-            <column name="tax_rate" type="decimal(5,2)" remarks="税率">
+            <column name="tax_rate" type="decimal(12,4)" remarks="税率"/>
+            <column name="financial_year" type="int" remarks="财务年度">
+                <constraints nullable="false"/>
             </column>
-            <column name="finicial_year" type="varchar(4)" remarks="财务年度">
-            </column>
-            <column name="comments" type="varchar(100)" remarks="备注">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="comments" type="varchar(255)" remarks="备注"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
+
         <createTable tableName="vendor_payment" remarks="供应商付款">
             <column name="id" type="varchar(32)" remarks="供应商发票主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_payment_id"/>
@@ -234,7 +237,4 @@
             </column>
         </createTable>
     </changeSet>
-
-
-
 </databaseChangeLog>

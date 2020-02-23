@@ -5,6 +5,10 @@ package com.elnido.modules;
  */
 public interface Constants {
 
+    interface Common {
+        String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+    }
+
     interface I18N {
 
         interface General{
