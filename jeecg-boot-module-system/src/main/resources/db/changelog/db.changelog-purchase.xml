@@ -10,87 +10,91 @@
             <column name="id" type="varchar(32)" remarks="采购合同主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_contract_id"/>
             </column>
-            <column name="contract_number" type="varchar(20)" remarks="合同编号">
+            <column name="contract_code" type="varchar(32)" remarks="合同编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contract_title" type="varchar(128)" remarks="合同标题">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contract_type_code" type="int" remarks="合同类型">
                 <constraints nullable="false"/>
             </column>
             <column name="company_id" type="varchar(32)" remarks="公司主键">
-            </column>
-            <column name="contract_title" type="varchar(80)" remarks="合同标题">
-            </column>
-            <column name="customer_type" type="varchar(10)" remarks="合同类型">
+                <constraints nullable="false"/>
             </column>
             <column name="vendor_id" type="varchar(32)" remarks="供应商">
+                <constraints nullable="false"/>
             </column>
-            <column name="contact_phone" type="varchar(30)" remarks="联络电话">
+            <column name="project_id" type="varchar(32)" remarks="项目主键">
+                <constraints nullable="false"/>
             </column>
-            <column name="contact_person_id" type="varchar(30)" remarks="联络人身份证号码">
+            <column name="begin_date" type="date" remarks="生效日期开始时间">
+                <constraints nullable="false"/>
             </column>
-            <column name="social_credit_code" type="varchar(30)" remarks="社会信用代码">
+            <column name="end_date" type="date" remarks="生效日期结束时间">
+                <constraints nullable="false"/>
             </column>
-            <column name="tax_subject" type="varchar(20)" remarks="纳税人资格">
-            </column>
-            <column name="business_license" type="varchar(30)" remarks="营业执照号码">
-            </column>
-            <column name="tax_code" type="varchar(30)" remarks="税务登记号">
-            </column>
-            <column name="create_by" type="varchar(32)" remarks="创建人">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="contact_person" type="varchar(32)" remarks="联络人"/>
+            <column name="contact_phone" type="varchar(32)" remarks="联络电话"/>
+            <column name="contact_person_id" type="varchar(32)" remarks="联络人身份证号码"/>
+            <column name="social_credit_code" type="varchar(32)" remarks="社会信用代码"/>
+            <column name="tax_subject" type="varchar(32)" remarks="纳税人资格"/>
+            <column name="business_license" type="varchar(32)" remarks="营业执照号码"/>
+            <column name="tax_code" type="varchar(32)" remarks="税务登记号"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
-
 
         <createTable tableName="purchase_contract_item" remarks="采购合同行项目">
             <column name="id" type="varchar(32)" remarks="采购合同行项目主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_contract_item_id"/>
             </column>
             <column name="contract_id" type="varchar(32)" remarks="合同主键">
+                <constraints nullable="false"/>
             </column>
-            <column name="item_no" type="varchar(4)" remarks="合同行编号">
+            <column name="item_no" type="int" remarks="合同行编号">
+                <constraints nullable="false"/>
             </column>
-            <column name="material_id" type="varchar(32)" remarks="物料数据主键">
+            <column name="material_id" type="varchar(32)" remarks="物料主键">
+                <constraints nullable="false"/>
             </column>
-            <column name="material_description" type="varchar(100)" remarks="物料描述">
+            <column name="material_code" type="varchar(32)" remarks="物料代码">
+                <constraints nullable="false"/>
             </column>
-            <column name="unit_code" type="varchar(5)" remarks="单位">
+            <column name="material_name" type="varchar(32)" remarks="物料名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_description" type="varchar(255)" remarks="物料描述">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_code" type="varchar(32)" remarks="单位">
+                <constraints nullable="false"/>
             </column>
             <column name="quantity" type="decimal(12,3)" remarks="数量">
+                <constraints nullable="false"/>
             </column>
-            <column name="unit_price" type="decimal(12,3)" remarks="单价">
+            <column name="unit_price" type="decimal(12,2)" remarks="单价">
+                <constraints nullable="false"/>
             </column>
-            <column name="tax_rate" type="decimal(12, 2)" remarks="约定税率">
-            </column>
-            <column name="acceptance_criteria" type="varchar(50)" remarks="验收标准">
-            </column>
-            <column name="contract_schedule" type="varchar(50)" remarks="合同工期">
-            </column>
-            <column name="quanlity_standard" type="varchar(50)" remarks="质量标准">
-            </column>
-            <column name="payment_method" type="varchar(20)" remarks="付款方式">
-            </column>
-            <column name="payment_term" type="varchar(50)" remarks="付款节点">
-            </column>
-            <column name="warranty" type="varchar(40)" remarks="保修期限">
-            </column>
-            <column name="warranty_aggrement" type="varchar(80)" remarks="保修条款">
-            </column>
-            <column name="comments" type="varchar(100)" remarks="备注">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="tax_rate" type="decimal(12, 4)" remarks="约定税率"/>
+            <column name="acceptance_criteria" type="varchar(64)" remarks="验收标准"/>
+            <column name="contract_schedule" type="varchar(64)" remarks="合同工期"/>
+            <column name="quality_standard" type="varchar(64)" remarks="质量标准"/>
+            <column name="payment_method_code" type="int" remarks="付款方式"/>
+            <column name="payment_term" type="varchar(128)" remarks="付款节点"/>
+            <column name="warranty" type="varchar(64)" remarks="保修期限"/>
+            <column name="warranty_agreement" type="varchar(255)" remarks="保修条款"/>
+            <column name="comments" type="varchar(128)" remarks="备注"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
+
         <createTable tableName="vendor_settlement" remarks="供应商结算">
             <column name="id" type="varchar(32)" remarks="供应商结算单主键">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_settlement_id"/>

@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.text.MessageFormat;
 import java.util.Objects;
 
-import static com.elnido.modules.masterdata.Constants.I18N.General.*;
+import static com.elnido.modules.Constants.I18N.General.*;
 
 /**
  * @author baogang

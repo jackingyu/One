@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.purchasecontract.mapper.PurchaseContractItemMapper">
+
+    <select id="findPurchaseContractItemsByPurchaseContractId" resultType="com.elnido.modules.purchasecontract.entity.PurchaseContractItem">
+        <include refid="purchase_contract_item_base"></include>
+        and contract_id = #{id}
+    </select>
+
+    <select id="findPurchaseContractItemDetailById" resultType="com.elnido.modules.purchasecontract.entity.PurchaseContractItem">
+        <include refid="purchase_contract_item_base"></include>
+        and id = #{id}
+    </select>
+    
+    <sql id="purchase_contract_item_base">
+        select pci.*, ut.item_text as unit_name, pm.item_text as payment_method_name
+        from purchase_contract_item pci,
+             (select sdi.item_value, sdi.item_text
+              from sys_dict sd, sys_dict_item sdi
+              where sd.id=sdi.dict_id and sd.dict_code='unit') ut,
+             (select sdi.item_value, sdi.item_text
+              from sys_dict sd, sys_dict_item sdi
+              where sd.id=sdi.dict_id and sd.dict_code='payment_method') pm
+        where pci.unit_code=ut.item_value and pci.payment_method_code=pm.item_value
+    </sql>
+</mapper>

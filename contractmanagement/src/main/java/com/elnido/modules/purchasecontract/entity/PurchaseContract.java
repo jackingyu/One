@@ -1,11 +1,14 @@
-package com.elnido.modules.masterdata.entity;
+package com.elnido.modules.purchasecontract.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.elnido.modules.api.LocalDateSerializer;
+import com.elnido.modules.masterdata.entity.Vendor;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,10 +17,8 @@ import lombok.experimental.Accessors;
 import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,31 +28,48 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("customer")
-@ApiModel(value = "客户对象", description = "客户表")
-public class Customer implements Serializable {
+@TableName("purchase_contract")
+@ApiModel(value = "采购合同对象", description = "采购合同表")
+public class PurchaseContract implements Serializable {
 
     /**
      * id
      */
     @TableId(type = IdType.ID_WORKER_STR)
     @ApiModelProperty(value = "id")
-    @JsonIgnore
     private String id;
 
-    @ApiModelProperty(value = "客户编码")
-    @NotEmpty(message = "{elnido.validation.general.idshouldnotempty}")
-    private String customerCode;
+    @ApiModelProperty(value = "采购合同编码")
+    private String contractCode;
 
-    @ApiModelProperty(value = "客户名称")
-    private String customerName;
+    @ApiModelProperty(value = "采购合同标题")
+    private String contractTitle;
+
+    @ApiModelProperty(value = "合同类型")
+    @Dict(dicCode = "contract_type")
+    private Integer contractTypeCode;
+
+    @ApiModelProperty(value = "公司ID")
+    @Dict(dicCode = "id", dictTable = "company", dicText = "company_name")
+    private String companyId;
+
+    @ApiModelProperty(value = "供应商ID")
+    private String vendorId;
+
+    @ApiModelProperty(value = "项目ID")
+    @Dict(dicCode = "id", dictTable = "project", dicText = "project_name")
+    private String projectId;
+
+    @ApiModelProperty(value = "合同有效期开始时间")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate beginDate;
+
+    @ApiModelProperty(value = "合同有效期结束时间")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate endDate;
 
     @ApiModelProperty(value = "联络人")
     private String contactPerson;
-
-    @ApiModelProperty(value = "用户组编码")
-    @Dict(dicCode = "customer_group")
-    private Integer customerGroupCode;
 
     @ApiModelProperty(value = "联络人身份证号码")
     private String contactPersonId;
@@ -71,9 +89,12 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "税务登记号")
     private String taxCode;
 
-    @ApiModelProperty(value = "银行账户")
+    @ApiModelProperty(value = "供应商")
     @TableField(exist = false)
-    private List<BankAccount> bankAccounts;
+    private Vendor vendor;
+
+    @TableField(exist = false)
+    private List<PurchaseContractItem> purchaseContractItems;
 
     /**
      * 创建人
@@ -88,14 +109,14 @@ public class Customer implements Serializable {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "创建时间")
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 更新人
      */
     @ApiModelProperty(value = "修改人")
     @JsonIgnore
-    private String updateBy;
+    private LocalDate updateBy;
 
     /**
      * 更新时间

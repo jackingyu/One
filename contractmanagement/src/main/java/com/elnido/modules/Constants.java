@@ -1,4 +1,4 @@
-package com.elnido.modules.masterdata;
+package com.elnido.modules;
 
 /**
  * @author baogang

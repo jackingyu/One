@@ -1,25 +1,16 @@
 package com.elnido.modules.masterdata.controller;
 
-import com.elnido.modules.masterdata.entity.Bank;
-import com.elnido.modules.masterdata.entity.BankAccount;
-import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.BankService;
-import com.elnido.modules.masterdata.util.ElnidoUtil;
+import com.elnido.modules.util.ElnidoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.util.MessageUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-
-import static com.elnido.modules.masterdata.Constants.I18N.General.*;
 
 /**
  * @author baogang

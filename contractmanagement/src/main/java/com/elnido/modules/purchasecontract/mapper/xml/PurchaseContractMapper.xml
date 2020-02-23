@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.elnido.modules.purchasecontract.mapper.PurchaseContractMapper">
+
+    <resultMap id="purchaseContractMap" type="com.elnido.modules.purchasecontract.entity.PurchaseContract">
+        <association property="vendor" column="vendor_id"
+                     select="com.elnido.modules.masterdata.mapper.VendorMapper.selectById"/>
+    </resultMap>
+
+    <resultMap id="purchaseContractAssociateMap" type="com.elnido.modules.purchasecontract.entity.PurchaseContract">
+        <association property="vendor" column="vendor_id"
+                     select="com.elnido.modules.masterdata.mapper.VendorMapper.selectById"/>
+        <collection property="purchaseContractItems" column="id"
+                    select="com.elnido.modules.purchasecontract.mapper.PurchaseContractItemMapper.findPurchaseContractItemsByPurchaseContractId"/>
+    </resultMap>
+
+    <select id="findPagedPurchaseContractHeaders" resultMap="purchaseContractMap">
+        select pc.*
+        from purchase_contract pc, vendor v
+        where pc.vendor_id=v.id
+        <if test="projectId != null and projectId != ''">
+            and pc.project_id = #{projectId}
+        </if>
+        <if test="contractTypeCode != null ">
+            and pc.contract_type_code = #{contractTypeCode}
+        </if>
+        <if test="vendorName != null and vendorName != ''">
+            <bind name="pattern" value="'%' + vendorName + '%'" />
+            and vendor_name like #{pattern}
+        </if>
+    </select>
+
+    <select id="findAssociatedPurchaseContractInfoById" resultMap="purchaseContractAssociateMap">
+        select *
+        from purchase_contract
+        where id = #{id}
+    </select>
+</mapper>

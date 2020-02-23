@@ -4,7 +4,7 @@
 
     <resultMap id="vendorMap" type="com.elnido.modules.masterdata.entity.Vendor">
         <result column="id" property="id"/>
-        <result column="vendor_ode" property="vendorCode"/>
+        <result column="vendor_code" property="vendorCode"/>
         <result column="vendor_name" property="vendorName"/>
         <result column="contact_person_id" property="contactPersonId"/>
         <result column="contact_phone" property="contactPhone"/>

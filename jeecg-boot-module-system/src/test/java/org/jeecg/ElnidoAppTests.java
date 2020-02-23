@@ -11,6 +11,7 @@ import org.junit.runners.Suite;
   VendorTest.class,
   ProjectTest.class,
   CustomerTest.class,
+  PurchaseContractTest.class,
   ElnidoUtilTest.class
 })
 public class ElnidoAppTests {
