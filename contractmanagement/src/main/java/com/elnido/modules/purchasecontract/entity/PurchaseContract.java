@@ -109,14 +109,14 @@ public class PurchaseContract implements Serializable {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "创建时间")
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 更新人
      */
     @ApiModelProperty(value = "修改人")
     @JsonIgnore
-    private LocalDate updateBy;
+    private String updateBy;
 
     /**
      * 更新时间
