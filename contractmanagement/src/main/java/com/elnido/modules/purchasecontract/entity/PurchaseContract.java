@@ -1,14 +1,9 @@
 package com.elnido.modules.purchasecontract.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.elnido.modules.api.LocalDateSerializer;
+import com.baomidou.mybatisplus.annotation.*;
 import com.elnido.modules.masterdata.entity.Vendor;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,7 +13,6 @@ import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -126,4 +120,12 @@ public class PurchaseContract implements Serializable {
     @ApiModelProperty(value = "修改时间")
     @JsonIgnore
     private Date updateTime;
+
+    /**
+     * 逻辑删除标识
+     */
+    @ApiModelProperty(value = "逻辑删除标识")
+    @Dict(dicCode = "del_flag")
+    @TableLogic
+    private String delFlag;
 }

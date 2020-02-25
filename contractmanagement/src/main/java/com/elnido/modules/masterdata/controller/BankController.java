@@ -24,7 +24,7 @@ public class BankController {
     @Resource
     private BankService bankService;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "银行表-查询所有总行", notes = "银行-银行总行")
     public Result<List<Map<String, Object>>> findAllBank() {
         Result<List<Map<String, Object>>> result = new Result<>();

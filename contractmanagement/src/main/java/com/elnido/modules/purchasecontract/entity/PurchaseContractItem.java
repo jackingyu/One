@@ -1,9 +1,6 @@
 package com.elnido.modules.purchasecontract.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
@@ -131,4 +128,12 @@ public class PurchaseContractItem implements Serializable {
     @ApiModelProperty(value = "修改时间")
     @JsonIgnore
     private Date updateTime;
+
+    /**
+     * 逻辑删除标识
+     */
+    @ApiModelProperty(value = "逻辑删除标识")
+    @Dict(dicCode = "del_flag")
+    @TableLogic
+    private String delFlag;
 }
