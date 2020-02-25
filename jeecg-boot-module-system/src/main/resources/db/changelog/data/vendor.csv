@@ -1,0 +1,2 @@
+id,vendor_code,vendor_name,vendor_group_code,contact_person,contact_person_id,contact_phone,social_credit_code,tax_subject,business_license,tax_code,create_by,create_time,update_by,update_time,del_flag
+V1,VENDO01,测试vendor,1,上海,sdf,138001380001,A00001,小规模纳税人,授权,0.06,admin,2019-12-11 22:22:22,admin,2019-12-11 22:22:22,0
