@@ -61,11 +61,13 @@ public class PurchaseContract implements Serializable {
     private String projectId;
 
     @ApiModelProperty(value = "合同有效期开始时间")
-//    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date beginDate;
 
     @ApiModelProperty(value = "合同有效期结束时间")
-//    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 
     @ApiModelProperty(value = "联络人")
@@ -109,14 +111,14 @@ public class PurchaseContract implements Serializable {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "创建时间")
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 更新人
      */
     @ApiModelProperty(value = "修改人")
     @JsonIgnore
-    private LocalDate updateBy;
+    private String updateBy;
 
     /**
      * 更新时间
