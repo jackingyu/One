@@ -33,7 +33,6 @@ public class Vendor implements Serializable {
      */
     @TableId(type = IdType.ID_WORKER_STR)
     @ApiModelProperty(value = "id")
-    @JsonIgnore
     private String id;
 
     @ApiModelProperty(value = "供应商编码")

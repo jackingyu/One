@@ -14,4 +14,11 @@ public interface VendorService extends IService<Vendor> {
      * @return
      */
     boolean createVendor(Vendor vendor);
+
+    /**
+     * 根据供应商ID查询供应商详情
+     * @param id
+     * @return
+     */
+    Vendor findVendorById(String id);
 }

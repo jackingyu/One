@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 import static com.elnido.modules.Constants.I18N.General.RECORD_NOT_EXIST_KEY;
 
@@ -42,7 +43,7 @@ public class VendorController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "供应商表-按条件查询供应商信息", notes = "供应商表-按条件查询供应商")
     public Result<IPage<Vendor>> pagedSearchVendors(Vendor vendor,
                                                     @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -57,12 +58,47 @@ public class VendorController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "供应商表-新建供应商信息", notes = "供应商表-新建供应商")
     public Result<Vendor> createCompany(@RequestBody Vendor vendor) {
         Result<Vendor> result = new Result<>();
         boolean created = vendorService.createVendor(vendor);
         if(created) {
+            result.setResult(vendor);
+            result.setSuccess(true);
+        } else {
+            result.setSuccess(false);
+        }
+        return result;
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "供应商表-根据ID查询供应商详情", notes = "供应商表-根据ID查询供应商详情")
+    public Result<?> findVendorById(@PathVariable String id) {
+        Result<Vendor> result = new Result<>();
+        Vendor vendor = vendorService.findVendorById(id);
+
+        if (Objects.isNull(vendor)) {
+            return Result.error(HttpStatus.NOT_FOUND.value(), messageUtils.get(RECORD_NOT_EXIST_KEY));
+        }
+        result.setResult(vendor);
+        result.setSuccess(true);
+        return result;
+    }
+
+    @PutMapping
+    @ApiOperation(value = "供应商表-更新供应商", notes = "供应商表-更新供应商")
+    public Result<?> updateVendor(@RequestBody Vendor vendor) {
+        Result<Vendor> result = new Result<>();
+
+        String vendorId = vendor.getId();
+        Vendor queriedVendor = vendorService.getById(vendorId);
+        if (Objects.isNull(queriedVendor)) {
+            return Result.error(HttpStatus.NOT_FOUND.value(), messageUtils.get(RECORD_NOT_EXIST_KEY));
+        }
+
+        boolean updated = vendorService.updateById(vendor);
+        if(updated) {
             result.setResult(vendor);
             result.setSuccess(true);
         } else {
