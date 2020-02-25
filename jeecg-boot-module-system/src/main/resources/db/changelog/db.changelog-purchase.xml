@@ -171,11 +171,10 @@
             <column name="company_id" type="varchar(32)" remarks="公司主键">
                 <constraints nullable="false"/>
             </column>
-            <column name="contract_content" type="varchar(255)" remarks="合同实施内容">
-                <constraints nullable="false"/>
-            </column>
             <column name="amount" type="decimal(12,2)" remarks="开票金额">
                 <constraints nullable="false"/>
+            </column>
+            <column name="contract_content" type="varchar(255)" remarks="合同实施内容">
             </column>
             <column name="invoice_date" type="datetime(0)" remarks="开票日期">
                 <constraints nullable="false"/>
@@ -183,7 +182,9 @@
             <column name="invoice_number" type="varchar(54)" remarks="发票号码">
                 <constraints nullable="false"/>
             </column>
-            <column name="tax_rate" type="decimal(12,4)" remarks="税率"/>
+            <column name="tax_rate" type="decimal(12,4)" remarks="税率">
+                <constraints nullable="false"/>
+            </column>
             <column name="financial_year" type="int" remarks="财务年度">
                 <constraints nullable="false"/>
             </column>

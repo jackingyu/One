@@ -43,7 +43,7 @@ public class CustomerController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "客户表-按条件查询客户信息", notes = "客户表-按条件查询客户")
     public Result<IPage<Customer>> pagedSearchVendors(Customer customer,
                                                       @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -59,7 +59,7 @@ public class CustomerController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "客户表-新建客户信息", notes = "客户表-新建客户")
     public Result<Customer> createCompany(@RequestBody @Valid Customer customer) {
         Result<Customer> result = new Result<>();

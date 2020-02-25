@@ -32,7 +32,7 @@ public class ProjectController {
     @Resource
     private ProjectService projectService;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "项目表-按条件查询项目信息", notes = "项目表-按条件查询项目商")
     public Result<IPage<Project>> pagedSearchProjects(Project project,
                                                       @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -48,7 +48,7 @@ public class ProjectController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "项目表-新建项目信息", notes = "项目表-新建项目")
     public Result<Project> createProject(@RequestBody Project project) {
         Result<Project> result = new Result<>();
@@ -63,7 +63,7 @@ public class ProjectController {
         return result;
     }
 
-    @PutMapping()
+    @PutMapping
     @ApiOperation(value = "项目表-更新项目信息", notes = "项目表-更新项目信息")
     public Result<?> updateProject(@RequestBody Project project) {
         Result<Project> result = new Result<>();

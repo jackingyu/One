@@ -58,13 +58,13 @@ public class PurchaseContractItem implements Serializable {
     private Integer unitCode;
 
     @ApiModelProperty(value = "数量")
-    private Double quantity;
+    private BigDecimal quantity;
 
     @ApiModelProperty(value = "单价")
-    private Double unitPrice;
+    private BigDecimal unitPrice;
 
     @ApiModelProperty(value = "约定税率")
-    private Double taxRate;
+    private BigDecimal taxRate;
 
     @ApiModelProperty(value = "验收标准")
     private String acceptanceCriteria;

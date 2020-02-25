@@ -16,6 +16,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,7 +58,7 @@ public class PurchaseContractTest{
 	}
 
 	private PurchaseContractItem createMockPurchaseContractItem(Integer itemNo, String materialId, Integer unitCode,
-																Double quantity, Double unitPrice, Double taxRate,
+																BigDecimal quantity, BigDecimal unitPrice, BigDecimal taxRate,
 																String acceptanceCriteria, String qualityStandard,
 																Integer paymentMethodCode, String paymentTerm,
 																String warranty, String warrantyAgreement) {
@@ -84,11 +85,11 @@ public class PurchaseContractTest{
 				1, IMPORT_VENDOR_ID, IMPORT_COMPANY_ID, IMPORT_PROJECT_ID, new Date(), new Date());
 
 		PurchaseContractItem purchaseContractItem0 = createMockPurchaseContractItem(10, IMPORT_MATERIAL_ID_1, 1,
-				new Double(1), new Double(10.23), new Double(17.76),"acceptanceCriteria_1", "qualityStandard_1",
+				new BigDecimal(1), new BigDecimal(10.23), new BigDecimal(17.76),"acceptanceCriteria_1", "qualityStandard_1",
 				1, "paymentTerm_1", "warranty_1", "warrantyAgreement_1");
 
 		PurchaseContractItem purchaseContractItem1 = createMockPurchaseContractItem(20, IMPORT_MATERIAL_ID_2, 1,
-				new Double(1), new Double(10.23), new Double(17.76),"acceptanceCriteria_1", "qualityStandard_1",
+				new BigDecimal(1), new BigDecimal(10.23), new BigDecimal(17.76),"acceptanceCriteria_1", "qualityStandard_1",
 				1, "paymentTerm_1", "warranty_1", "warrantyAgreement_1");
 
 		List<PurchaseContractItem> purchaseContractItemList = new ArrayList<>();

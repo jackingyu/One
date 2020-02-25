@@ -31,7 +31,7 @@ public class MaterialController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "物料表-按条件查询物料", notes = "物料表-按条件查询物料")
     public Result<IPage<Material>> searchPagedMaterials(Material material,
                                                         @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -47,7 +47,7 @@ public class MaterialController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "物料表-新建物料", notes = "物料表-新建物料")
     public Result<Material> createMaterial(@RequestBody Material material) {
         Result<Material> result = new Result<>();
@@ -61,7 +61,7 @@ public class MaterialController {
         return result;
     }
 
-    @PutMapping()
+    @PutMapping
     @ApiOperation(value = "物料表-更新物料", notes = "物料表-更新物料")
     public Result<Material> updateMaterial(@RequestBody Material material) {
         Result<Material> result = new Result<>();
