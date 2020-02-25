@@ -2,7 +2,7 @@ package com.elnido.modules.masterdata.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.elnido.modules.masterdata.entity.Company;
-import com.elnido.modules.masterdata.model.CompanyPage;
+import com.elnido.modules.masterdata.data.CompanyPage;
 
 /**
  * @author baogang

@@ -1,4 +1,4 @@
-package com.elnido.modules.masterdata.model;
+package com.elnido.modules.masterdata.data;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;

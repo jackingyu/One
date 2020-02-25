@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.elnido.modules.masterdata.entity.BankAccount;
 import com.elnido.modules.masterdata.entity.Company;
 import com.elnido.modules.masterdata.enums.PartnerTypeEnum;
-import com.elnido.modules.masterdata.model.CompanyPage;
+import com.elnido.modules.masterdata.data.CompanyPage;
 import com.elnido.modules.masterdata.service.BankAccountService;
 import com.elnido.modules.masterdata.service.CompanyService;
 import com.elnido.modules.util.ElnidoUtil;
