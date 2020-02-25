@@ -1,0 +1,9 @@
+id,material_code,material_name,material_group_code,one_time_flag,material_description,create_by,create_time,update_by,update_time,del_flag
+M1,M1,测试物料1,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+M2,M2,测试物料2,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+M3,M2,测试物料3,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+M7,M7,测试物料7,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+M4,M4,测试物料4,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+M5,M5,测试物料5,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+M6,M6,测试物料6,0,1,测试物料,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+

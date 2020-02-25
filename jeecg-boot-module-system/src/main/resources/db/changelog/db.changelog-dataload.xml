@@ -5,9 +5,14 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="dataload" author="jack">
-        <loadData tableName="sys_role" file="/db/changelog/data/sys_role.csv">
-        </loadData>
-        <loadData tableName="sys_permission" file="/db/changelog/data/sys_permission.csv">
-        </loadData>
+
+       <!-- <loadUpdateData tableName="sys_role" file="/db/changelog/data/sys_role.csv" primaryKey="id" >
+        </loadUpdateData>
+        <loadUpdateData tableName="sys_permission" file="/db/changelog/data/sys_permission.csv" primaryKey="id">
+        </loadUpdateData>-->
+        <loadUpdateData tableName="vendor" file="/db/changelog/data/vendor.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="material" file="/db/changelog/data/material.csv" primaryKey="id">
+        </loadUpdateData>
     </changeSet>
 </databaseChangeLog>
