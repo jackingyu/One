@@ -1,0 +1,6 @@
+id,vendor_id,company_id,vendor_name,financial_year,payment_date,payment_amount,payment_method_code,bank_account_id,comments,create_by,create_time,update_by,update_time,del_flag
+VP1,V1,C1,非常好的vendor,2020,2020-05-05,19999,1,B1,1111,admin,2019-12-11 22:22:22,admin,2019-12-11 22:22:22,0
+VP2,V1,C1,非常好的vendor,2020,2020-06-05,1343,1,B2,1111,admin,2019-12-11 22:22:22,admin,2019-12-11 22:22:22,0
+VP3,V1,C1,非常好的vendor,2020,2020-04-05,1999933,2,B5,1111,admin,2019-12-11 22:22:22,admin,2019-12-11 22:22:22,0
+VP4,V2,C1,非常好的vendor2,2020,2020-07-05,1999913,1,B3,1111,admin,2019-12-11 22:22:22,admin,2019-12-11 22:22:22,0
+VP5,V1,C1,非常好的vendor,2020,2020-08-05,1999911,2,B1,1111,admin,2019-12-11 22:22:22,admin,2019-12-11 22:22:22,0

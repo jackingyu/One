@@ -1,0 +1,6 @@
+id,contract_id,item_no,material_id,material_code,material_name,material_description,unit_code,quantity,unit_price,tax_rate,acceptance_criteria,contract_schedule,quality_standard,payment_method_code,payment_term,warranty,warranty_agreement,comments,create_by,create_time,update_by,update_time,del_flag
+PCT1,CT1,10,M1,M1,测试物料1,测试物料1,KG,100,100,0.06,项目封顶,不知道,优秀,1," 货到付款",保修两年,全包,备注,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+PCT2,CT1,20,M2,M2,测试物料2,测试物料2,KG,50,30,11,项目封顶2,不知道3,优秀4,0," 货到付款2",保修两2年,全包2,备注2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+PCT3,CT1,30,M2,M2,测试物料8,测试物料2,KG,50,30,11,项目封顶2,不知道3,优秀4,0," 货到付款2",保修两2年,全包2,备注2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+PCT4,CT1,40,M3,M2,测试物料9,测试物料2,KG,50,30,11,项目封顶2,不知道3,优秀4,0," 货到付款2",保修两2年,全包2,备注2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+PCT5,CT1,50,M4,M2,测试物料10,测试物料2,KG,50,30,11,项目封顶2,不知道3,优秀4,0," 货到付款2",保修两2年,全包2,备注2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0

@@ -1,0 +1,5 @@
+id,company_code,company_name,create_by,create_time,update_by,update_time,del_flag
+C1,1000,大隆鑫,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+C2,2000,大隆鑫2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+C3,3000,大隆鑫2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+C3,3000,大隆鑫2,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0

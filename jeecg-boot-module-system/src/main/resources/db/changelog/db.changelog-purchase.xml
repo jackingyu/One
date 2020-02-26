@@ -121,9 +121,10 @@
             <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
             </column>
         </createTable>
+
         <createTable tableName="vendor_settlement_item" remarks="供应商结算单行项目">
             <column name="id" type="varchar(32)" remarks="供应商结算单行项目主键">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_settlementitem_id"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vendor_settlement_item_id"/>
             </column>
             <column name="vendor_settlement_id" type="varchar(32)" remarks="供应商结算单主键">
             </column>
@@ -169,9 +170,6 @@
                 <constraints nullable="false"/>
             </column>
             <column name="company_id" type="varchar(32)" remarks="公司主键">
-                <constraints nullable="false"/>
-            </column>
-            <column name="contract_content" type="varchar(255)" remarks="合同实施内容">
                 <constraints nullable="false"/>
             </column>
             <column name="amount" type="decimal(12,2)" remarks="开票金额">

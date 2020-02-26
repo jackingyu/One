@@ -6,13 +6,31 @@
 
     <changeSet id="dataload" author="jack">
 
-       <!-- <loadUpdateData tableName="sys_role" file="/db/changelog/data/sys_role.csv" primaryKey="id" >
+        <!-- <loadUpdateData tableName="sys_role" file="/db/changelog/data/sys_role.csv" primaryKey="id" >
+         </loadUpdateData>
+         <loadUpdateData tableName="sys_permission" file="/db/changelog/data/sys_permission.csv" primaryKey="id">
+         </loadUpdateData>-->
+        <loadUpdateData tableName="bank_account" file="/db/changelog/data/bank_account.csv" primaryKey="id">
         </loadUpdateData>
-        <loadUpdateData tableName="sys_permission" file="/db/changelog/data/sys_permission.csv" primaryKey="id">
-        </loadUpdateData>-->
-        <loadUpdateData tableName="vendor" file="/db/changelog/data/vendor.csv" primaryKey="id">
+        <loadUpdateData tableName="company" file="/db/changelog/data/company.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="customer" file="/db/changelog/data/customer.csv" primaryKey="id">
         </loadUpdateData>
         <loadUpdateData tableName="material" file="/db/changelog/data/material.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="partner_bankaccount_rel" file="/db/changelog/data/partner_bankaccount_rel.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="project" file="/db/changelog/data/project.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="purchase_contract" file="/db/changelog/data/purchase_contract.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="purchase_contract_item" file="/db/changelog/data/purchase_contract_item.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="vendor" file="/db/changelog/data/vendor.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="vendor_invoice" file="/db/changelog/data/vendor_invoice.csv" primaryKey="id">
+        </loadUpdateData>
+        <loadUpdateData tableName="vendor_payment" file="/db/changelog/data/vendor_payment.csv" primaryKey="id">
         </loadUpdateData>
     </changeSet>
 </databaseChangeLog>
