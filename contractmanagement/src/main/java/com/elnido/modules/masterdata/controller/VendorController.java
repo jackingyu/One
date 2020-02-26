@@ -97,7 +97,7 @@ public class VendorController {
             return Result.error(HttpStatus.NOT_FOUND.value(), messageUtils.get(RECORD_NOT_EXIST_KEY));
         }
 
-        boolean updated = vendorService.updateById(vendor);
+        boolean updated = vendorService.updateVendorWithBankAccounts(vendor);
         if(updated) {
             result.setResult(vendor);
             result.setSuccess(true);

@@ -126,70 +126,64 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sales_invoice_id"/>
             </column>
             <column name="customer_id" type="varchar(32)" remarks="客户id">
+                <constraints nullable="false"/>
             </column>
-            <column name="finicial_year" type="varchar(4)" remarks="财务年度">
+            <column name="financial_year" type="int" remarks="财务年度">
+                <constraints nullable="false"/>
             </column>
             <column name="contract_content" type="varchar(255)" remarks="合同实施内容">
+                <constraints nullable="false"/>
             </column>
             <column name="material_id" type="varchar(32)" remarks="物料数据主键">
+                <constraints nullable="false"/>
             </column>
-            <column name="material_description" type="varchar(100)" remarks="物料描述">
+            <column name="material_description" type="varchar(255)" remarks="物料描述">
             </column>
             <column name="invoice_date" type="datetime(0)" remarks="开票日期">
+                <constraints nullable="false"/>
             </column>
             <column name="amount" type="decimal(12,2)" remarks="开票金额">
+                <constraints nullable="false"/>
             </column>
             <column name="invoice_number" type="varchar(50)" remarks="发票号码">
+                <constraints nullable="false"/>
             </column>
-            <column name="tax_rate" type="decimal(12,2)" remarks="税率">
-            </column>
-            <column name="comments" type="varchar(100)" remarks="备注">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="tax_rate" type="decimal(12,2)" remarks="税率"/>
+            <column name="comments" type="varchar(255)" remarks="备注"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
         <createTable tableName="sales_receipt" remarks="销售收款">
             <column name="id" type="varchar(32)" remarks="销售收款单">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sales_receipt_id"/>
             </column>
             <column name="customer_id" type="varchar(32)" remarks="客户id">
+                <constraints nullable="false"/>
             </column>
-            <column name="finicial_year" type="varchar(4)" remarks="财务年度">
+            <column name="financial_year" type="int" remarks="财务年度">
+                <constraints nullable="false"/>
             </column>
-            <column name="payment_method" type="varchar(5)" remarks="付款方式">
+            <column name="payment_method_code" type="int" remarks="付款方式">
+                <constraints nullable="false"/>
             </column>
             <column name="receipt_date" type="datetime(0)" remarks="收款日期">
+                <constraints nullable="false"/>
             </column>
-            <column name="amount" type="datetime(0)" remarks="收款金额">
+            <column name="amount" type="datetime(12,2)" remarks="收款金额">
+                <constraints nullable="false"/>
             </column>
-            <column name="bank_id" type="varchar(32)" remarks="银行主键">
+            <column name="bank_account_id" type="varchar(32)" remarks="客户银行账号主键">
+                <constraints nullable="false"/>
             </column>
-            <column name="bank_name" type="varchar(50)" remarks="银行名称">
-            </column>
-            <column name="subbranch_id" type="varchar(32)" remarks="支行主键">
-            </column>
-            <column name="subbranch_name" type="varchar(50)" remarks="支行名称">
-            </column>
-            <column name="account_name" type="varchar(50)" remarks="银行账号名称">
-            </column>
-            <column name="account_number" type="varchar(50)" remarks="银行账号">
-            </column>
-            <column name="comments" type="varchar(100)" remarks="备注">
-            </column>
-            <column name="create_time" type="datetime(0)" remarks="创建时间">
-            </column>
-            <column name="update_by" type="varchar(32)" remarks="修改人">
-            </column>
-            <column name="update_time" type="datetime(0)" remarks="修改时间">
-            </column>
-            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
-            </column>
+            <column name="comments" type="varchar(255)" remarks="备注"/>
+            <column name="create_by" type="varchar(32)" remarks="创建人"/>
+            <column name="create_time" type="datetime(0)" remarks="创建时间"/>
+            <column name="update_by" type="varchar(32)" remarks="修改人"/>
+            <column name="update_time" type="datetime(0)" remarks="修改时间'"/>
+            <column name="del_flag" type="tinyint(1)" defaultValue="0" remarks="删除标识0-正常,1-已删除"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

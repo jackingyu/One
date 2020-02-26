@@ -38,7 +38,7 @@ public class VendorPaymentController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "供应商付款表-分页查询供应商付款", notes = "供应商付款表-分页查询供应商付款")
     public Result<IPage<VendorPayment>> findPagedVendorPayment(VendorPayment vendorPayment,
                                                                @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -55,7 +55,7 @@ public class VendorPaymentController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "供应商付款表-创建供应商付款", notes = "供应商付款表-创建供应商付款")
     public Result<?> createVendorPayment(@RequestBody @Validated({InsertValidation.class}) VendorPayment vendorPayment) {
         Result<Object> result = new Result<>();
@@ -81,7 +81,7 @@ public class VendorPaymentController {
         return result;
     }
 
-    @PutMapping()
+    @PutMapping
     @ApiOperation(value = "供应商付款表-更新供应商付款", notes = "供应商付款表-更新供应商付款")
     public Result<?> updateVendorPayment(@RequestBody @Validated(UpdateValidation.class) VendorPayment vendorPayment) {
         Result<Object> result = new Result<>();
