@@ -1,0 +1,2 @@
+id,contract_code,contract_title,contract_type_code,company_id,vendor_id,project_id,begin_date,end_date,contact_person,contact_phone,contact_person_id,social_credit_code,tax_subject,business_license,tax_code,create_by,create_time,update_by,update_time,del_flag
+CT1,DLX001,第一张测试工单,1,1000,V1,P1,2019-01-01,2021-01-01,张超,138001380000,310115124434,DX001,小规模纳税人,营业执照,111,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0

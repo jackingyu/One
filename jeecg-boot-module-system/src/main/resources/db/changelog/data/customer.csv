@@ -1,0 +1,6 @@
+id,customer_code,customer_name,customer_group_code,contact_person,contact_phone,contact_person_id,social_credit_code,tax_subject,business_license,tax_code,create_by,create_time,update_by,update_time,del_flag
+V1,C1,customer 1,1,张飞,13800138000,310218198903150015,111111111,小规模纳税人,工商,55555555,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+V2,C2,customer 2,1,张飞 1,13800138001,310218198903150016,111111111,小规模纳税人,工商,55555555,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+V3,C3,customer 3,2,张飞 2,13800138002,310218198903150017,111111111,小规模纳税人,工商,55555555,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+V4,C4,customer 4,3,张飞 3,13800138003,310218198903150018,111111111,小规模纳税人,工商,55555555,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
+V5,C5,customer 5,1,张飞 4,13800138004,310218198903150019,111111111,小规模纳税人,工商,55555555,admin,2019-03-30 12:44:48,admin,2019-03-30 12:44:48,0
