@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="fininace_data" author="jack">
+        <createTable tableName="vendor_gl_account" remarks="供应商总账">
+            <column name="id" type="varchar(32)" remarks="供应商总账主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_purchase_gl_id"/>
+            </column>
+            <column name="company_id" type="varchar(32)" remarks="公司主键">
+            </column>
+            <column name="vendor_id" type="varchar(32)" remarks="供应商">
+            </column>
+            <column name="year" type="varchar(4)" remarks="财务年">
+            </column>
+            <column name="settlement_amount" type="decimal(12,2)" remarks="结算总额">
+            </column>
+            <column name="paid_amount" type="decimal(12,2)" remarks="已付款总额">
+            </column>
+            <column name="invoice_amount" type="decimal(12,2)" remarks="已收发票总额">
+            </column>
+            <column name="cf_unpaid_amount" type="decimal(12,2)" remarks="上年度累计欠款">
+            </column>
+            <column name="cf_uninvoiced_amount" type="decimal(12,2)" remarks="上年度累计欠票">
+            </column>
+            <column name="currency" type="varchar(4)" remarks="货币">
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+        <createTable tableName="customer_gl_account" remarks="客户总账">
+            <column name="id" type="varchar(32)" remarks="客户总账主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer_gl_id"/>
+            </column>
+            <column name="company_id" type="varchar(32)" remarks="公司主键">
+            </column>
+            <column name="customer_id" type="varchar(32)" remarks="客户">
+            </column>
+            <column name="year" type="varchar(4)" remarks="财务年">
+            </column>
+            <column name="settlement_amount" type="decimal(12,2)" remarks="结算总额">
+            </column>
+            <column name="received_amount" type="decimal(12,2)" remarks="已收款总额">
+            </column>
+            <column name="billing_amount" type="decimal(12,2)" remarks="已开票总额">
+            </column>
+            <column name="cf_unreceived_amount" type="decimal(12,2)" remarks="上年度累计欠款">
+            </column>
+            <column name="cf_unbilling_amount" type="decimal(12,2)" remarks="上年度累计未开票">
+            </column>
+            <column name="currency" type="varchar(4)" remarks="货币">
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+        <createTable tableName="account_document" remarks="财务凭证">
+            <column name="id" type="varchar(32)" remarks="财务凭证主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_account_document_id"/>
+            </column>
+            <column name="company_id" type="varchar(32)" remarks="公司主键">
+            </column>
+            <column name="customer_id" type="varchar(32)" remarks="客户">
+            </column>
+            <column name="vendor_id" type="varchar(32)" remarks="供应商">
+            </column>
+            <column name="year" type="varchar(4)" remarks="财务年">
+            </column>
+            <column name="amount" type="decimal(12,2)" remarks="金额">
+            </column>
+            <column name="currency" type="varchar(4)" remarks="货币">
+            </column>
+            <column name="acc_key" type="varchar(2)" remarks="需要计入哪个总账,K-VENDOR,V-CUSTOMER">
+            </column>
+            <column name="dc_indicator" type="varchar(2)" remarks="借贷项标记,借增贷减,C-credit,表示增加,D-debit,表示减少">
+            </column>
+            <column name="create_by" type="varchar(32)" remarks="创建人">
+            </column>
+            <column name="create_time" type="datetime(0)" remarks="创建时间">
+            </column>
+            <column name="update_by" type="varchar(32)" remarks="修改人">
+            </column>
+            <column name="update_time" type="datetime(0)" remarks="修改时间">
+            </column>
+            <column name="del_flag" type="tinyint(1)" remarks="删除标识0-正常,1-已删除">
+            </column>
+        </createTable>
+
+    </changeSet>
+
+
+
+</databaseChangeLog>

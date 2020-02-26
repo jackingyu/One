@@ -16,6 +16,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.math.BigDecimal;
+>>>>>>> c3799ec5cb353a78db11eb2e7d423e423e9074ed
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -49,7 +53,11 @@ public class VendorInvoice implements Serializable {
     private String contractContent;
 
     @ApiModelProperty(value = "开票金额")
+<<<<<<< HEAD
     private Double amount;
+=======
+    private BigDecimal amount;
+>>>>>>> c3799ec5cb353a78db11eb2e7d423e423e9074ed
 
     @ApiModelProperty(value = "开票日期")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
@@ -60,7 +68,11 @@ public class VendorInvoice implements Serializable {
     private String invoiceNumber;
 
     @ApiModelProperty(value = "税率")
+<<<<<<< HEAD
     private Double taxRate;
+=======
+    private BigDecimal taxRate;
+>>>>>>> c3799ec5cb353a78db11eb2e7d423e423e9074ed
 
     @ApiModelProperty(value = "财务年度")
     private Integer financialYear;

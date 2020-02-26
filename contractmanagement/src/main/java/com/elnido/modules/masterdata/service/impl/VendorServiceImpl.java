@@ -28,6 +28,9 @@ public class VendorServiceImpl extends ServiceImpl<VendorMapper, Vendor> impleme
     @Resource
     private Partner2BankAccountService partner2BankAccountService;
 
+    @Resource
+    private VendorMapper vendorMapper;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean createVendor(Vendor vendor) {
@@ -50,5 +53,10 @@ public class VendorServiceImpl extends ServiceImpl<VendorMapper, Vendor> impleme
                 .collect(Collectors.toList());
         boolean saveRelation = partner2BankAccountService.saveBatch(partner2BankAccountList);
         return saveVendor && saveBankAccount && saveRelation;
+    }
+
+    @Override
+    public Vendor findVendorById(String id) {
+        return vendorMapper.findVendorWithBankAccounts(id);
     }
 }

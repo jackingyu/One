@@ -17,17 +17,9 @@
                     select="com.elnido.modules.masterdata.mapper.Partner2BankAccountMapper.findBankAccountsByVendorId"/>
     </resultMap>
 
-    <select id="findPagedVendor" resultMap="vendorMap">
+    <select id="findVendorWithBankAccounts" resultMap="vendorMap">
         select *
         from vendor
-        <where>
-        <if test="vendorGroupCode != null and vendorGroupCode != ''">
-            vendor_group_code = #{vendorGroupCode}
-        </if>
-        <if test="vendorName != null and vendorName != ''">
-        <bind name="pattern" value="'%' + vendorName + '%'" />
-            and name like #{pattern}
-        </if>
-        </where>
+        where id = #{id}
     </select>
 </mapper>

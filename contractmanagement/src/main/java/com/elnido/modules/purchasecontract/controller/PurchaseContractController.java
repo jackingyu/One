@@ -38,7 +38,7 @@ public class PurchaseContractController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "采购合同表-按条件分页查询采购合同", notes = "采购合同表-按条件分页查询采购合同")
     public Result<PurchaseContractPage<PurchaseContract>> findPagedPurchaseContract(@RequestParam(name = "projectId", required = false) String projectId,
                                                                                     @RequestParam(name = "contractTypeCode", required = false) Integer contractTypeCode,
@@ -59,7 +59,7 @@ public class PurchaseContractController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "采购合同表-创建采购合同", notes = "采购合同表-创建采购合同")
     public Result<?> createPurchaseContract(@RequestBody PurchaseContract purchaseContract) {
         Result<Object> result = new Result<>();

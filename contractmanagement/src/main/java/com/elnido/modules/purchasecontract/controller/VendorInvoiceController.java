@@ -21,7 +21,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.Objects;
-
 import static com.elnido.modules.Constants.I18N.General.RECORD_NOT_EXIST_KEY;
 
 /**
@@ -39,7 +38,7 @@ public class VendorInvoiceController {
     @Resource
     private MessageUtils messageUtils;
 
-    @GetMapping()
+    @GetMapping
     @ApiOperation(value = "供应商发票表-分页查询供应商发票", notes = "供应商发票表-分页查询供应商发票")
     public Result<IPage<VendorInvoice>> findPagedVendorInvoice(VendorInvoice vendorInvoice,
                                                               @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
@@ -56,7 +55,7 @@ public class VendorInvoiceController {
         return result;
     }
 
-    @PostMapping()
+    @PostMapping
     @ApiOperation(value = "供应商发票表-创建供应商发票", notes = "供应商发票表-创建供应商发票")
     public Result<?> createVendorInvoice(@RequestBody @Validated({InsertValidation.class}) VendorInvoice vendorInvoice) {
         Result<Object> result = new Result<>();
@@ -82,7 +81,8 @@ public class VendorInvoiceController {
         return result;
     }
 
-    @PutMapping()
+
+    @PutMapping
     @ApiOperation(value = "供应商发票表-更新供应商发票", notes = "供应商发票表-更新供应商发票")
     public Result<?> updateVendorInvoice(@RequestBody @Validated(UpdateValidation.class) VendorInvoice vendorInvoice) {
         Result<Object> result = new Result<>();

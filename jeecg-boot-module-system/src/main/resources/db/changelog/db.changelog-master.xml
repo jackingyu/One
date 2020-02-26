@@ -26,6 +26,9 @@
             DROP TABLE IF EXISTS `sales_receipt`;
             DROP TABLE IF EXISTS `sales_billing_document`;
             DROP TABLE IF EXISTS `sales_billing_document_item`;
+            DROP TABLE IF EXISTS `customer_gl_account`;
+            DROP TABLE IF EXISTS `vendor_gl_account`;
+            DROP TABLE IF EXISTS `account_document`;
         </sql>
     </changeSet>
 
@@ -187,5 +190,6 @@
 
     <include file="/db/changelog/db.changelog-purchase.xml"/>
     <include file="/db/changelog/db.changelog-sales.xml"/>
-
+    <include file="/db/changelog/db.changelog-finance.xml"/>
+    <include file="/db/changelog/db.changelog-dataload.xml"/>
 </databaseChangeLog>
