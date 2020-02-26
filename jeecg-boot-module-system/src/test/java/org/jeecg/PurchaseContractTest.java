@@ -1,8 +1,8 @@
 package org.jeecg;
 
+import com.elnido.modules.purchasecontract.data.PurchaseContractPage;
 import com.elnido.modules.purchasecontract.entity.PurchaseContract;
 import com.elnido.modules.purchasecontract.entity.PurchaseContractItem;
-import com.elnido.modules.purchasecontract.model.PurchaseContractPage;
 import com.elnido.modules.purchasecontract.service.PurchaseContractService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

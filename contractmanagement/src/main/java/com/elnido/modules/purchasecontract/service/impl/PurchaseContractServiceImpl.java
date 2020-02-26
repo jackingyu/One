@@ -7,7 +7,7 @@ import com.elnido.modules.purchasecontract.mapper.PurchaseContractMapper;
 import com.elnido.modules.masterdata.service.*;
 import com.elnido.modules.purchasecontract.entity.PurchaseContract;
 import com.elnido.modules.purchasecontract.entity.PurchaseContractItem;
-import com.elnido.modules.purchasecontract.model.PurchaseContractPage;
+import com.elnido.modules.purchasecontract.data.PurchaseContractPage;
 import com.elnido.modules.purchasecontract.service.PurchaseContractItemService;
 import com.elnido.modules.purchasecontract.service.PurchaseContractService;
 import org.springframework.stereotype.Service;

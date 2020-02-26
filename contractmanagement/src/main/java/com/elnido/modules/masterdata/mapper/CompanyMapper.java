@@ -2,7 +2,7 @@ package com.elnido.modules.masterdata.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.elnido.modules.masterdata.entity.Company;
-import com.elnido.modules.masterdata.model.CompanyPage;
+import com.elnido.modules.masterdata.data.CompanyPage;
 
 /**
  * @author baogang

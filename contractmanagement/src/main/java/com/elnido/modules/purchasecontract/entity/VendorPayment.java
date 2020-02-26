@@ -1,7 +1,9 @@
 package com.elnido.modules.purchasecontract.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-import com.elnido.modules.masterdata.entity.Vendor;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.elnido.modules.validation.InsertValidation;
 import com.elnido.modules.validation.UpdateValidation;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -16,11 +18,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
-import java.math.BigDecimal;
->>>>>>> c3799ec5cb353a78db11eb2e7d423e423e9074ed
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -29,9 +26,9 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("vendor_invoice")
-@ApiModel(value = "供应商发票对象", description = "供应商发票表")
-public class VendorInvoice implements Serializable {
+@TableName("vendor_payment")
+@ApiModel(value = "供应商付款对象", description = "供应商付款表")
+public class VendorPayment implements Serializable {
 
     /**
      * id
@@ -49,33 +46,21 @@ public class VendorInvoice implements Serializable {
     @ApiModelProperty(value = "公司主键")
     private String companyId;
 
-    @ApiModelProperty(value = "合同实施内容")
-    private String contractContent;
-
-    @ApiModelProperty(value = "开票金额")
-<<<<<<< HEAD
-    private Double amount;
-=======
-    private BigDecimal amount;
->>>>>>> c3799ec5cb353a78db11eb2e7d423e423e9074ed
-
-    @ApiModelProperty(value = "开票日期")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date invoiceDate;
-
-    @ApiModelProperty(value = "发票号码")
-    private String invoiceNumber;
-
-    @ApiModelProperty(value = "税率")
-<<<<<<< HEAD
-    private Double taxRate;
-=======
-    private BigDecimal taxRate;
->>>>>>> c3799ec5cb353a78db11eb2e7d423e423e9074ed
-
     @ApiModelProperty(value = "财务年度")
     private Integer financialYear;
+
+    @ApiModelProperty(value = "付款日期")
+    private Date paymentDate;
+
+    @ApiModelProperty(value = "付款金额")
+    private Double paymentAmount;
+
+    @ApiModelProperty(value = "付款方式编码")
+    @Dict(dicCode = "payment_method")
+    private Integer paymentMethodCode;
+
+    @ApiModelProperty(value = "供应商银行账号主键")
+    private String bankAccountId;
 
     @ApiModelProperty(value = "备注")
     private String comments;
